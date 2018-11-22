@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+    	http://www.springframework.org/schema/tx
+    	http://www.springframework.org/schema/tx/spring-tx-4.3.xsd ">
+
+<tx:advice id="txAdvice">
+    <tx:attributes>
+        <tx:method name="add*" rollback-for="java.lang.Exception" />
+        <tx:method name="save*" rollback-for="java.lang.Exception" />
+        <tx:method name="create*" rollback-for="java.lang.Exception" />
+        <tx:method name="update*" rollback-for="java.lang.Exception" />
+        <tx:method name="del*"  rollback-for="java.lang.Exception" />
+        <tx:method name="init*" rollback-for="java.lang.Exception" />
+        <tx:method name="do*" rollback-for="java.lang.Exception" />
+        <tx:method name="*" read-only="true" />
+    </tx:attributes>
+</tx:advice>
+
+<!-- （aop拦截,表示那些类需要事务管理）那些类的哪些方法参与事务，无须在方法前加@Transactional -->
+<aop:config expose-proxy="true">
+    <aop:pointcut id="serviceMethod" expression="execution(* com.core.service.*.*(..))" />
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
+</aop:config>
+</beans>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.dao.NoticeMapper">
+	<cache-ref namespace="com.core.dao.UserInfoMapper"/>
+	<resultMap id="BaseResultMap" type="com.base.model.Notice">
+		<id column="noticeId" jdbcType="INTEGER" property="noticeId" />
+		<result column="doUserId" jdbcType="INTEGER" property="doUserId" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+	</resultMap>
+	<sql id="All_Column_List">
+		a.noticeId, a.doUserId, a.content
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="All_Column_List" />
+		from notice a
+		where a.noticeId = #{noticeId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" flushCache="true">
+		delete from notice
+		where noticeId = #{noticeId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="noticeId" parameterType="com.base.model.Notice" flushCache="true">
+		insert into notice
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="noticeId != null">
+				noticeId,
+			</if>
+			<if test="doUserId != null">
+				doUserId,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="noticeId != null">
+				#{noticeId,jdbcType=INTEGER},
+			</if>
+			<if test="doUserId != null">
+				#{doUserId,jdbcType=INTEGER},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" useGeneratedKeys="true" keyProperty="noticeId" parameterType="com.base.model.Notice" flushCache="true">
+		update notice
+		<set>
+			<if test="doUserId != null">
+				doUserId = #{doUserId,jdbcType=INTEGER},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where noticeId = #{noticeId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.base.model.Notice" flushCache="true">
+		update notice
+		set doUserId = #{doUserId,jdbcType=INTEGER},
+		content = #{content,jdbcType=VARCHAR}
+		where noticeId = #{noticeId,jdbcType=INTEGER}
+	</update>
+	<select id="countInt" resultType="java.lang.Integer">
+		select count(a.noticeId) from notice a
+		where 1=1
+	</select>
+	<select id="getNoticeByPage" resultType="com.base.model.Notice">
+		select a.*,b.userName from notice a
+		left join userInfo b on a.doUserId=b.userId
+		where 1=1
+		order by a.noticeId desc
+	</select>
+</mapper>

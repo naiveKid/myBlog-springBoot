@@ -1,0 +1,294 @@
+html {
+    font-family:Arial;
+    font-size:12px;
+    color:rgb(30,33,41);
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,p {
+    margin:0px;
+    padding:0px;
+}
+img {
+    border:0px none;
+}
+ol,ul,li {
+    list-style:outside none none;
+}
+q::before,q::after {
+    content:"";
+}
+input,button,textarea,select {
+    font-family:inherit;
+    font-size:inherit;
+    font-style:inherit;
+    font-weight:inherit;
+    outline:0px none;
+}
+input,button,textarea,select {
+}.f12 {
+     font-size:12px;
+ }
+.f14 {
+    font-size:14px;
+}
+.f18 {
+    font-size:18px;
+}
+.fc-fff {
+    color:rgb(255,255,255);
+}
+.fc-red {
+    color:rgb(229,0,79);
+}
+.cur {
+    cursor:pointer;
+}
+.tc {
+    text-align:center;
+}
+.fl {
+    float:left;
+    display:inline;
+}
+.fr {
+    float:right;
+    display:inline;
+}
+.cb {
+    clear:both;
+}
+.clearfix::after {
+    content:".";
+    display:block;
+    height:0px;
+    clear:both;
+    visibility:hidden;
+}
+.pr {
+    position:relative;
+}
+.pa {
+    position:absolute;
+}
+.none {
+    display:none;
+}
+.ilb {
+    display:inline-block;
+}
+.w {
+    width:100%;
+}
+.w1280 {
+    width:1280px;
+}
+.bg-red {
+    background-color:rgb(229,0,79);
+}
+.bg-F1F4F9 {
+    background-color:rgb(241,244,249);
+}
+.mt5 {
+    margin-top:5px;
+}
+.mt10 {
+    margin-top:10px;
+}
+.mt15 {
+    margin-top:15px;
+}
+.mt20 {
+    margin-top:20px;
+}
+.mb40 {
+    margin-bottom:25px;
+}
+.ml5 {
+    margin-left:5px;
+}
+.ml10 {
+    margin-left:10px;
+}
+.ml15 {
+    margin-left:15px;
+}
+.ml30 {
+    margin-left:30px;
+}
+.mr15 {
+    margin-right:15px;
+}
+.mr30 {
+    margin-right:30px;
+}
+.pt25 {
+    padding-top:25px;
+}
+.pb20 {
+    padding-bottom:20px;
+}
+.pl25 {
+    padding-left:25px;
+}
+a {
+    color:rgb(30,33,41);
+    text-decoration:none;
+}
+a:visited {
+    text-decoration:none;
+    color:rgb(30,33,41);
+}
+a:hover {
+    text-decoration:none;
+    color:rgb(30,33,41);
+}
+a:active {
+    text-decoration:none;
+    color:rgb(30,33,41);
+}
+a:focus {
+    outline:0px none;
+}
+.fc-fff a {
+    color:rgb(255,255,255);
+}
+.fc-red a {
+    color:rgb(229,0,79);
+}
+.w140 {
+    width:140px;
+}
+.w160 {
+    width:160px;
+}
+.w240 {
+    width:240px;
+}
+.w290 {
+    width:290px;
+}
+.w300 {
+    width:300px;
+}
+.mt3 {
+    margin-top:3px;
+}
+.fc-7B8591 {
+    color:rgb(123,133,145);
+}
+.fc-7B8591 a {
+    color:rgb(123,133,145);
+}
+.fc-red {
+    color:rgb(229,13,79);
+}
+.fc-red a {
+    color:rgb(229,13,79);
+}
+.bg-e8 {
+    background-color:rgb(232,232,232);
+}
+.header_top {
+    width:100%;
+    margin:0px auto;
+    position:relative;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+.top-text {
+    font-size:18px;
+    margin-left:1%;
+}
+.login_con {
+    position:relative;
+    width:100%;
+    height:500px;
+    background:transparent url('../images/login-bg.png') no-repeat scroll 50% 0px;
+}
+.login,.regis {
+    display:inline-block;
+    width:245px;
+    text-align:center;
+    height:42px;
+    line-height:42px;
+}
+.login-input {
+    height:36px;
+    line-height:36px;
+    padding-left:10px;
+    border:medium none;
+    outline:medium none;
+}
+.login,.regis {
+    display:inline-block;
+    width:180px;
+    text-align:center;
+    height:60px;
+    line-height:60px;
+}
+.zcon {
+    position:absolute;
+    right:85px;
+    width:360px;
+    height:405px;
+    padding-bottom:40px;
+    background:rgb(255,255,255) none repeat scroll 0% 0%;
+    top:50px;
+    font-size:14px;
+}
+.login-input-wrap {
+    position:relative;
+    margin-bottom:20px;
+    margin-left:30px;
+    border:1px solid rgb(232,236,241);
+    height:36px;
+}
+.userName-result {
+    font-size:10px;
+    margin-bottom:10px;
+    margin-left:30px;
+}
+.pwd-icon,.pwd {
+    width:50px;
+    line-height:36px;
+}
+.yzm-tip {
+    top:257px;
+    left:5px;
+}
+.login-yzm {
+    width:80px;
+    height:36px;
+    line-height:36px;
+    margin-left:20px;
+    background-color:rgb(231,236,239);
+}
+.login-yzm img {
+    width:80px;
+    height:36px;
+}
+.login-yzm-txt {
+    width:38px;
+    margin-top:2px;
+}
+.zddl {
+    width:14px;
+    height:14px;
+}
+#loginSubmit,#regSubmit,#ret-pwd-one,#ret-pwd-two,.btn {
+    width:300px;
+    height:40px;
+    line-height:40px;
+    background:rgb(229,14,79) none repeat scroll 0% 0%;
+    color:rgb(255,255,255);
+    font-size:18px;
+    border:medium none;
+    margin-left:30px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+.w210 {
+    width:210px;
+}
+.bg-1F212B {
+    background-color:rgb(31,33,43);
+}

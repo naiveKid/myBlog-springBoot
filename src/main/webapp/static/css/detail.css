@@ -1,0 +1,46 @@
+.c_titile {
+	margin: 20px 0;
+	color: #333;
+	font-size: 22px
+}
+
+.box_c, .c_titile {
+	text-align: center
+}
+
+.box_c {
+	margin-right: 30px;
+	padding: 5px 0;
+	border: 1px dashed #ccc;
+	color: #999
+}
+
+.box_c span {
+	margin: 0 10px
+}
+
+ul.infos {
+	overflow: hidden;
+	margin: 20px 30px 20px 0;
+	color: #666;
+	text-indent: 2em;
+	font-size: 14px;
+	line-height: 28px
+}
+
+ul.infos p {
+	margin-bottom: 5px
+}
+
+ul.infos p img {
+	display: block;
+	margin: auto
+}
+
+a:hover {
+	text-decoration: none
+}
+
+.box_c span a {
+	color: #099
+}

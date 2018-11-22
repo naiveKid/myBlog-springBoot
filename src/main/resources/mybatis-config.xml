@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--打印sql-->
+	<!--<settings>-->
+		<!--&lt;!&ndash; 打印查询语句 &ndash;&gt;-->
+	    <!--<setting name="logImpl" value="STDOUT_LOGGING" />-->
+    <!--</settings>-->
+	<plugins>
+		<plugin interceptor="com.core.interceptor.PageInterceptor">
+			<!-- 给拦截器传入一个参数（该参数在拦截器中判断拦截到的sql是不是需要分页的使用） -->
+			<property name="sqlIdByPageRegex" value=".+ByPage$" />
+		</plugin>
+	</plugins>
+	<mappers>
+	<!-- 采取spring-context.xml自动扫描目录下所有xml映射文件的方式 -->
+	</mappers>
+</configuration>

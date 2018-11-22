@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.dao.EssayMapper">
+	<cache-ref namespace="com.core.dao.UserInfoMapper"/>
+	<resultMap id="BaseResultMap" type="com.base.model.Essay">
+		<id column="essayId" jdbcType="INTEGER" property="essayId" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="doTime" jdbcType="VARCHAR" property="doTime" />
+		<result column="content" jdbcType="LONGVARCHAR" property="content" />
+		<result column="pictureId" jdbcType="INTEGER" property="pictureId" />
+		<result column="essayType" jdbcType="VARCHAR" property="essayType" />
+		<result column="clickNum" jdbcType="INTEGER" property="clickNum" />
+		<result column="showLevel" jdbcType="INTEGER" property="showLevel" />
+		<result column="text" jdbcType="LONGVARCHAR" property="text" />
+	</resultMap>
+	<sql id="All_Column_List">
+		a.essayId, a.title, a.doTime, a.pictureId, a.essayType,a.content,a.clickNum,a.showLevel,a.text
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="All_Column_List" />,
+		b.pictureName
+		from essay a
+		left join  picture b on b.pictureId=a.pictureId
+		where a.essayId = #{essayId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" flushCache="true">
+		delete from essay
+		where essayId = #{essayId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="essayId" parameterType="com.base.model.Essay" flushCache="true">
+		insert into essay
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="essayId != null">
+				essayId,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="doTime != null">
+				doTime,
+			</if>
+			<if test="pictureId != null">
+				pictureId,
+			</if>
+			<if test="essayType != null">
+				essayType,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="clickNum != null">
+				clickNum,
+			</if>
+			<if test="showLevel != null">
+				showLevel,
+			</if>
+			<if test="text != null">
+				text,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="essayId != null">
+				#{essayId,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="doTime != null">
+				#{doTime,jdbcType=VARCHAR},
+			</if>
+			<if test="pictureId != null">
+				#{pictureId,jdbcType=INTEGER},
+			</if>
+			<if test="essayType != null">
+				#{essayType,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="clickNum != null">
+				#{clickNum,jdbcType=INTEGER},
+			</if>
+			<if test="showLevel != null">
+				#{showLevel,jdbcType=INTEGER},
+			</if>
+			<if test="text != null">
+				#{text,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" useGeneratedKeys="true" keyProperty="essayId" parameterType="com.base.model.Essay" flushCache="true">
+		update essay
+		<set>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="doTime != null">
+				doTime = #{doTime,jdbcType=VARCHAR},
+			</if>
+			<if test="pictureId != null">
+				pictureId = #{pictureId,jdbcType=INTEGER},
+			</if>
+			<if test="essayType != null">
+				essayType = #{essayType,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="clickNum != null">
+				clickNum = #{clickNum,jdbcType=INTEGER},
+			</if>
+			<if test="showLevel != null">
+				showLevel = #{showLevel,jdbcType=INTEGER},
+			</if>
+			<if test="text != null">
+				text=#{text,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where essayId = #{essayId,jdbcType=INTEGER}
+	</update>
+	<select id="countInt" resultType="java.lang.Integer">
+		select count(a.essayId) from essay a
+		where 1=1
+	</select>
+	<select id="getCount" parameterType="String" resultType="java.lang.Integer">
+		select count(a.essayId) from essay a
+		where 1=1 and a.essayType=#{type}
+	</select>
+	<select id="getEssayByPage" parameterType="com.base.model.Essay"
+		resultType="com.base.model.Essay">
+		select a.*,b.pictureName from essay a
+		left join picture b on b.pictureId=a.pictureId
+		where 1=1 and a.essayType=#{essayType,jdbcType=VARCHAR}
+		order by ${showType} desc
+	</select>
+	<select id="getEssayLimitRows" parameterType="com.base.model.Essay"
+		resultType="com.base.model.Essay">
+		select a.*,b.pictureName from essay a
+		left join picture b on b.pictureId=a.pictureId
+		where 1=1 and a.essayType=#{essayType,jdbcType=VARCHAR}
+		limit #{start,jdbcType=INTEGER},#{rows,jdbcType=INTEGER}
+	</select>
+</mapper>

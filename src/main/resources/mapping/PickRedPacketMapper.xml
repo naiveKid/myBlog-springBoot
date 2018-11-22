@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.dao.PickRedPacketMapper">
+  <resultMap id="BaseResultMap" type="com.base.model.PickRedPacket">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="sumMoney" jdbcType="DECIMAL" property="sumMoney" />
+    <result column="doTime" jdbcType="VARCHAR" property="doTime" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="restNumber" jdbcType="INTEGER" property="restNumber" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+    select id, sumMoney, doTime, number, type, restNumber, version, remarks
+    from pickredpacket
+    </select>
+
+    <insert id="insert" keyProperty="id" parameterType="com.base.model.PickRedPacket" useGeneratedKeys="true">
+    insert into pickredpacket (id, sumMoney, doTime, 
+      number, type, restNumber, version,
+      remarks)
+    values (#{id,jdbcType=INTEGER}, #{sumMoney,jdbcType=DECIMAL}, #{doTime,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{restNumber,jdbcType=INTEGER},
+      #{version,jdbcType=INTEGER},#{remarks,jdbcType=VARCHAR})
+  </insert>
+
+   <select id="getPickRedPacketByPage" resultMap="BaseResultMap">
+    select id, sumMoney, doTime, number, type, restNumber, version, remarks
+    from pickredpacket
+    where 1=1
+    order by doTime desc
+  </select>
+
+    <update id="update" keyProperty="id" parameterType="com.base.model.PickRedPacket" useGeneratedKeys="true">
+        update pickredpacket
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="sumMoney != null">
+                sumMoney = #{sumMoney,jdbcType=DECIMAL},
+            </if>
+            <if test="doTime != null">
+                doTime = #{doTime,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                number = #{number,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="restNumber != null">
+                restNumber = #{restNumber,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getPickRedPacketById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, sumMoney, doTime, number, type, restNumber, version, remarks
+    from pickredpacket
+    where 1=1 and id=#{id,jdbcType=INTEGER}
+    order by doTime desc
+  </select>
+
+    <select id="getPickRedPacketRestNumberByPage" resultMap="BaseResultMap">
+    select id, sumMoney, doTime, number, type, restNumber, version, remarks
+    from pickredpacket
+    where 1=1 and restNumber&gt;0 and version=0
+    order by doTime desc
+  </select>
+</mapper>

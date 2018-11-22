@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.dao.RedPacketMapper">
+  <resultMap id="BaseResultMap" type="com.base.model.RedPacket">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="packetId" jdbcType="INTEGER" property="packetId" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="doTime" jdbcType="VARCHAR" property="doTime" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <insert id="insert" parameterType="com.base.model.RedPacket">
+    insert into redpacket (id, packetId, userId, 
+      money, doTime, remarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{packetId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{money,jdbcType=DECIMAL}, #{doTime,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, packetId, userId, money, doTime, remarks
+    from redpacket
+  </select>
+</mapper>

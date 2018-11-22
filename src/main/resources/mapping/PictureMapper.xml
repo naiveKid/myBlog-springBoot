@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.dao.PictureMapper">
+	<cache-ref namespace="com.core.dao.UserInfoMapper"/>
+	<resultMap id="BaseResultMap" type="com.base.model.Picture">
+		<id column="pictureId" jdbcType="INTEGER" property="pictureId" />
+		<result column="pictureName" jdbcType="VARCHAR" property="pictureName" />
+		<result column="pictureTitle" jdbcType="VARCHAR" property="pictureTitle" />
+		<result column="pictureContent" jdbcType="VARCHAR" property="pictureContent" />
+		<result column="pictureType" jdbcType="VARCHAR" property="pictureType" />
+	</resultMap>
+	<sql id="All_Column_List">
+		a.pictureId, a.pictureName, a.pictureTitle, a.pictureContent, a.pictureType
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="All_Column_List" />
+		from picture a
+		where a.pictureId = #{pictureId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" flushCache="true">
+		delete from picture
+		where pictureId = #{pictureId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="pictureId" parameterType="com.base.model.Picture" flushCache="true">
+		insert into picture
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pictureId != null">
+				pictureId,
+			</if>
+			<if test="pictureName != null">
+				pictureName,
+			</if>
+			<if test="pictureTitle != null">
+				pictureTitle,
+			</if>
+			<if test="pictureContent != null">
+				pictureContent,
+			</if>
+			<if test="pictureType != null">
+				pictureType,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pictureId != null">
+				#{pictureId,jdbcType=INTEGER},
+			</if>
+			<if test="pictureName != null">
+				#{pictureName,jdbcType=VARCHAR},
+			</if>
+			<if test="pictureTitle != null">
+				#{pictureTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="pictureContent != null">
+				#{pictureContent,jdbcType=VARCHAR},
+			</if>
+			<if test="pictureType != null">
+				#{pictureType,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" useGeneratedKeys="true" keyProperty="pictureId" parameterType="com.base.model.Picture" flushCache="true">
+		update picture
+		<set>
+			<if test="pictureName != null">
+				pictureName = #{pictureName,jdbcType=VARCHAR},
+			</if>
+			<if test="pictureTitle != null">
+				pictureTitle = #{pictureTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="pictureContent != null">
+				pictureContent = #{pictureContent,jdbcType=VARCHAR},
+			</if>
+			<if test="pictureType != null">
+				pictureType = #{pictureType,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where pictureId = #{pictureId,jdbcType=INTEGER}
+	</update>
+	<select id="getCount" parameterType="String" resultType="java.lang.Integer">
+		select count(a.pictureId) from picture a
+		where 1=1 and a.pictureType=#{type}
+	</select>
+	<select id="getAllPicture" parameterType="String"
+		resultType="com.base.model.Picture">
+		select a.* from picture a
+		where 1=1 and a.pictureType=#{type,jdbcType=VARCHAR}
+		order by a.pictureId desc
+	</select>
+	<select id="getPictureByPage" parameterType="com.base.model.Picture"
+		resultType="com.base.model.Picture">
+		select a.* from picture a
+		where 1=1 and a.pictureType=#{pictureType,jdbcType=VARCHAR}
+		order by a.pictureId desc
+	</select>
+</mapper>

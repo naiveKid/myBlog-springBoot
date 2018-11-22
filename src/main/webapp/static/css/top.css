@@ -1,0 +1,137 @@
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	font: 9pt/1.5 'Microsoft Yahei', Simsun;
+	color: #666;
+	background: #fff
+}
+
+img {
+	border: 0;
+	display: block
+}
+
+ul {
+	list-style: none
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: 400
+}
+
+a {
+	outline: 0
+}
+
+a:link, a:visited {
+	color: #666
+}
+
+a:hover, a:link, a:visited {
+	text-decoration: none
+}
+
+.blank, .clear {
+	clear: both
+}
+
+.blank {
+	height: 5px;
+	overflow: hidden;
+	width: 100%;
+	margin: auto
+}
+
+.left {
+	float: left
+}
+
+.right {
+	float: right
+}
+
+.f_l {
+	float: left
+}
+
+.f_r {
+	float: right
+}
+
+.l_box {
+	width: 70%;
+}
+
+.r_box {
+	width: 30%;
+}
+
+header {
+	width: 80%;
+	margin: 20px auto;
+	overflow: hidden;
+	clear: both
+}
+
+#topnav {
+	width: 60%;
+	background: #48ae15;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	border-radius: 46px
+}
+
+#topnav a {
+	display: inline-block;
+	font-size: 18px;
+	font-family: Microsoft Yahei, Arial, Helvetica, sans-serif;
+	padding: 0 20px;
+	color: #fff
+}
+
+#topnav a:hover {
+	background: #fff;
+	color: #000
+}
+
+#topnav a.active {
+	background: #fff;
+	color: #000
+}
+
+#topnav_current {
+	background: #f3ff41
+}
+
+aside {
+	width: 20%;
+	position: relative;
+	margin-top: 10px
+}
+
+article {
+	width: 80%;
+	margin: 20px auto
+}
+
+.n1 {
+	background: #5ea51b none repeat scroll 0 0
+}
+
+.n2 {
+	background: #8bbf5d none repeat scroll 0 0
+}
+
+footer {
+	background: #333;
+	width: 100%;
+	clear: both;
+	text-align: center;
+	position: fixed;
+	bottom: 0px;
+}
