@@ -328,9 +328,11 @@ public class WebController {
 			RequestContextHolderUtil.getSession().setAttribute("pageSize", LucenePage.pageSize);
 			mav.addObject("pageIndex", pageIndex);//当前页数
 			mav.addObject("keyWord", keyWord);//关键词
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException();
+		} catch (Exception e) {//查询出错
+            RequestContextHolderUtil.getSession().setAttribute("totalCount", 0);
+            RequestContextHolderUtil.getSession().setAttribute("pageSize", 10);
+            mav.addObject("pageIndex", pageIndex);//当前页数
+            mav.addObject("keyWord", keyWord);//关键词
 		}
 		return mav;
 	}
