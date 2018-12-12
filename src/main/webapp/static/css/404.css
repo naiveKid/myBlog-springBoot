@@ -1,0 +1,19 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font: 14px/1.6 Arial, sans-serif;
+}
+
+a:link, a:visited {
+	color: rgb(0, 122, 183);
+	text-decoration: none;
+	margin-right: 1em;
+}
+
+table {
+	margin: 0 auto;
+}
+
+table .text{
+	text-align: left;
+}
