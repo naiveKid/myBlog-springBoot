@@ -19,7 +19,7 @@ public class NoticeService {
 
 	/**
 	 * 得到分页留言记录
-	 * 
+	 *
 	 * @return
 	 */
 	public List<Notice> getNoticeByPage() {
@@ -28,7 +28,7 @@ public class NoticeService {
 
 	/**
 	 * 得到总记录条数
-	 * 
+	 *
 	 * @return
 	 */
 	public int getCount() {
@@ -37,7 +37,7 @@ public class NoticeService {
 
 	/**
 	 * 执行新增操作
-	 * 
+	 *
 	 * @param content
 	 * @return
 	 */
@@ -58,7 +58,7 @@ public class NoticeService {
 
 	/**
 	 * 执行删除操作
-	 * 
+	 *
 	 * @param id
 	 */
 	public void delNotice(int id) {

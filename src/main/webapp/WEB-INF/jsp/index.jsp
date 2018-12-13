@@ -334,10 +334,10 @@
 <script src="/static/js/jquery.nstSlider.min.js"></script>
 <script src="/static/js/page.js"></script>
 <script>
-    function downLoad(fileName, filePath) {
+    function downLoad(fileName, filePathSuffix) {
         window.location.href = "/web/downLoad?fileName="
-            + encodeURIComponent(fileName) + "&filePath="
-            + encodeURIComponent(filePath);
+            + encodeURIComponent(fileName) + "&filePathSuffix="
+            + encodeURIComponent(filePathSuffix);
     }
 </script>
 </body>

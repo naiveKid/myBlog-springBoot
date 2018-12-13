@@ -6,6 +6,7 @@ import com.base.model.Picture;
 import com.core.service.AboutMeService;
 import com.core.service.EssayService;
 import com.core.service.PictureService;
+import com.core.service.WebService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ public class AboutMeController {
 	EssayService essayService;
 	@Autowired
 	PictureService pictureService;
+    @Autowired
+    WebService webService;
 
 	/**
 	 * 前台aboutMe
@@ -41,7 +44,7 @@ public class AboutMeController {
 			}
 			Picture picture = pictureService.getPictureById(aboutMe.getPictureId());
 			if (picture != null) {
-				aboutMe.setPictureName(picture.getPictureName());
+				aboutMe.setPictureName(webService.getImgPrefix() + "/"+picture.getPictureName().replace("\\","/"));
 			}
 			mav.addObject("aboutMe", aboutMe);
 		}

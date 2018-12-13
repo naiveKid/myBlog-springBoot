@@ -20,6 +20,8 @@ import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
@@ -29,27 +31,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class LuceneUtil {
 	// Lucene索引文件路径
-	static String dir;
-
-    static {
-        try {
-            dir = ResourceUtils.getURL("classpath:").getPath() + File.separator + "lucene";
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+    @Value("${lucene.path}")
+	private String dir;
 
     // 定义分词器 false:最细粒度 true:智能分词模式
 	static Analyzer analyzer = new IKAnalyzer(true);
 
-	/**
+
+    /**
 	 * 添加索引
 	 * @param term
 	 * @param doc
 	 */
-	public static void addDoc(Term term,Document doc) {
+	public void addDoc(Term term,Document doc) {
 		try {
 			File file = new File(dir);
 			if (!file.exists()) {// 不存在则创建
@@ -76,7 +73,7 @@ public class LuceneUtil {
 	 * 删除索引
 	 * @param term
 	 */
-	public static void deleteDoc(Term term) {
+	public void deleteDoc(Term term) {
 		File file = new File(dir);
 		if (!file.exists()) {// 不存在则创建
 			file.mkdirs();
@@ -94,7 +91,6 @@ public class LuceneUtil {
 	        e.printStackTrace();
 	    }
 	}
-
 
 	/**
 	 * 根据页码和分页大小获取上一页的最后一个scoredocs
@@ -129,7 +125,7 @@ public class LuceneUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public static LucenePage search(int pageIndex, int pageSize, String field, String value) throws Exception {
+	public LucenePage search(int pageIndex, int pageSize, String field, String value) throws Exception {
 		File file = new File(dir);
 		if (!file.exists()) {// 不存在则创建
 			file.mkdirs();

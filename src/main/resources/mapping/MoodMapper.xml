@@ -12,11 +12,12 @@
 	<sql id="All_Column_List">
 		a.moodId, a.doTime, a.pictureId,a.content,a.text
 	</sql>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
-		resultMap="BaseResultMap">
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.base.model.Mood">
 		select
-		<include refid="All_Column_List" />
+		<include refid="All_Column_List" />,
+        b.pictureName
 		from mood a
+        left join  picture b on b.pictureId=a.pictureId
 		where a.moodId = #{moodId,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" flushCache="true">

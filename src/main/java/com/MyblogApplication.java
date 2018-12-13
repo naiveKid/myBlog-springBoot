@@ -9,7 +9,6 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 // 使用@ServletComponentScan开启注解
 // Servlet、Filter、Listener可以直接通过@WebServlet、@WebFilter、@WebListener注解自动注册
 @ServletComponentScan
-//开启dubbo
 @MapperScan(value="com.core.dao")
 public class MyblogApplication {
     public static void main(String[] args) {

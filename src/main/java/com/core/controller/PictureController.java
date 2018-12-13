@@ -2,6 +2,7 @@ package com.core.controller;
 
 import com.base.model.Picture;
 import com.core.service.PictureService;
+import com.core.service.WebService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ import java.util.List;
 public class PictureController {
     @Autowired
     PictureService pictureService;
+    @Autowired
+    WebService webService;
 
     /**
      * 前台picture
@@ -27,6 +30,9 @@ public class PictureController {
     public ModelAndView picturePage() {
         ModelAndView mav = new ModelAndView("photo");
         List<Picture> list = pictureService.getAllPicture("photo");
+        for (Picture picture : list) {
+            picture.setPictureName(webService.getImgPrefix() + "/" + picture.getPictureName().replace("\\", "/"));
+        }
         mav.addObject("list", list);
         return mav;
     }
@@ -43,6 +49,9 @@ public class PictureController {
     public ModelAndView manage() {
         ModelAndView mav = new ModelAndView("admin/photo");
         List<Picture> list = pictureService.getPictureByPage("photo");
+        for (Picture picture : list) {
+            picture.setPictureName(webService.getImgPrefix() + "/" + picture.getPictureName().replace("\\", "/"));
+        }
         mav.addObject("list", list);
         return mav;
     }
@@ -55,10 +64,11 @@ public class PictureController {
      */
     //是否具有admin角色
     @RequiresRoles("admin")
-    @RequestMapping(value = "/alterPage/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/alterPage/{id}", method = RequestMethod.GET)
     public ModelAndView alterPage(@PathVariable int id) {
         ModelAndView mav = new ModelAndView("admin/alterPhoto");
         Picture picture = pictureService.getPictureById(id);
+        picture.setPictureName(webService.getImgPrefix() + "/" + picture.getPictureName().replace("\\", "/"));
         mav.addObject("picture", picture);
         return mav;
     }
@@ -115,17 +125,18 @@ public class PictureController {
 
     /**
      * 删除相册
+     *
      * @param id
      * @return
      */
     //是否具有admin角色
     @RequiresRoles("admin")
-    @RequestMapping(value = "/deletePicture/{id}",method = RequestMethod.GET)
-	public ModelAndView deletePicture(@PathVariable int id){
-		ModelAndView mav = new ModelAndView("blank");
-		pictureService.delPicture(id);
-		mav.addObject("msg", "删除成功!");
-		mav.addObject("gotoPage", "picture/manage");
-		return mav;
-	}
+    @RequestMapping(value = "/deletePicture/{id}", method = RequestMethod.GET)
+    public ModelAndView deletePicture(@PathVariable int id) {
+        ModelAndView mav = new ModelAndView("blank");
+        pictureService.delPicture(id);
+        mav.addObject("msg", "删除成功!");
+        mav.addObject("gotoPage", "picture/manage");
+        return mav;
+    }
 }

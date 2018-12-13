@@ -32,6 +32,8 @@ public class SystemJob {
     RedPacketService redPacketService;
     @Autowired
     RedisTemplateUtils redisTemplateUtils;
+    @Autowired
+    LuceneUtil luceneUtil;
 
     /**
      * 启动30秒执行一次之后每10个小时执行一次(为创建索引之前的已存在的数据创建索引)
@@ -61,7 +63,7 @@ public class SystemJob {
                 // 以主键作为域进行添加更新操作
                 Term term = new Term("essayId", essay.getEssayId().toString());
                 // 调用，创建索引库
-                LuceneUtil.addDoc(term, doc);
+                luceneUtil.addDoc(term, doc);
             }
             start += rows;
         }

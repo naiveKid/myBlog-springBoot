@@ -260,6 +260,12 @@
             <artifactId>json</artifactId>
             <version>20160810</version>
         </dependency>
+        <!-- 谷歌guava工具框架 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0.1-jre</version>
+        </dependency>
     </dependencies>
 
     <build>

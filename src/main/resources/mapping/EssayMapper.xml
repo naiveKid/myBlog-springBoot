@@ -16,8 +16,7 @@
 	<sql id="All_Column_List">
 		a.essayId, a.title, a.doTime, a.pictureId, a.essayType,a.content,a.clickNum,a.showLevel,a.text
 	</sql>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
-		resultMap="BaseResultMap">
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.base.model.Essay">
 		select
 		<include refid="All_Column_List" />,
 		b.pictureName
