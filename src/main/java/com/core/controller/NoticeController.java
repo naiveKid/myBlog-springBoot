@@ -2,6 +2,7 @@ package com.core.controller;
 
 import com.base.model.Notice;
 import com.base.model.UserInfo;
+import com.base.pojo.Page;
 import com.core.service.NoticeService;
 import com.core.service.UserService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -32,6 +33,7 @@ public class NoticeController {
 	public ModelAndView noticePage() {
 		ModelAndView mav = new ModelAndView("notice");
 		List<Notice> list = noticeService.getNoticeByPage();
+        Page.setTotalCount(noticeService.getCount());
 		for (Notice n : list) {
 			UserInfo u = userService.getUserName(n.getDoUserId());
 			if (u != null) {
@@ -73,6 +75,7 @@ public class NoticeController {
 	public ModelAndView manage() {
 		ModelAndView mav = new ModelAndView("admin/notice");
 		List<Notice> list = noticeService.getNoticeByPage();
+        Page.setTotalCount(noticeService.getCount());
 		for (Notice n : list) {
 			UserInfo u = userService.getUserName(n.getDoUserId());
 			if (u != null) {

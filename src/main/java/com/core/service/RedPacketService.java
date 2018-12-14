@@ -63,6 +63,7 @@ public class RedPacketService {
 
     /**
      * 分页查看可以参与抢红包的活动
+     *
      * @return
      */
     public List<PickRedPacket> getPickRedPacketRestNumberByPage() {
@@ -138,12 +139,13 @@ public class RedPacketService {
 
     /**
      * 预先生成小红包的相关金额信息缓存
+     *
      * @param pickRedPacket
      */
     public void createRedPacketCache(PickRedPacket pickRedPacket) {
         int num = pickRedPacket.getNumber();
         double[] dou;
-        if (pickRedPacket.getType()==0) {//金额等分
+        if (pickRedPacket.getType() == 0) {//金额等分
             dou = avgMoney(pickRedPacket.getSumMoney().floatValue(), num);
         } else {//随机金额
             dou = randMoney(pickRedPacket.getSumMoney().floatValue(), num);
@@ -153,27 +155,28 @@ public class RedPacketService {
         for (int i = 0; i < num; i++) {
             object.put("id", i);
             object.put("money", dou[i]);
-            object.put("userId","#");//赋予空值
-            redisTemplateUtils.lSetRightPush("redPacket_" + pickRedPacket.getId(), object.toJSONString(),3600*24);//缓存时间1天
+            object.put("userId", "#");//赋予空值
+            redisTemplateUtils.lSetRightPush("redPacket_" + pickRedPacket.getId(), object.toJSONString(), 3600 * 24);//缓存时间1天
         }
     }
 
     /**
      * 将红包活动剩余个数重置
+     *
      * @param packetId
      * @param restNumber
      */
     @Async//开启新的线程运行
-    public void saveUserRedPacketByRedis(Integer packetId,Integer restNumber,Integer version){
-        PickRedPacket pickRedPacket=new PickRedPacket();
+    public void saveUserRedPacketByRedis(Integer packetId, Integer restNumber, Integer version) {
+        PickRedPacket pickRedPacket = new PickRedPacket();
         pickRedPacket.setId(packetId);
         pickRedPacket.setRestNumber(restNumber);
         pickRedPacket.setVersion(version);
         pickRedPackeDao.update(pickRedPacket);
         //将相关的缓存置为10秒过期
-        redisTemplateUtils.expire("redPacket_" + packetId,10);
-        redisTemplateUtils.expire("useRedPacket_" + packetId,10);
-        redisTemplateUtils.expire("userRedPacketMap_" + packetId,10);
+        redisTemplateUtils.expire("redPacket_" + packetId, 10);
+        redisTemplateUtils.expire("useRedPacket_" + packetId, 10);
+        redisTemplateUtils.expire("userRedPacketMap_" + packetId, 10);
     }
 
     /**
@@ -185,8 +188,8 @@ public class RedPacketService {
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     public double doRedPacket(Integer packetId) {
         HttpSession session = RequestContextHolderUtil.getSession();
-        PickRedPacket pickRedPacket=pickRedPackeDao.getPickRedPacketById(packetId);
-        if(pickRedPacket.getRestNumber()==0||pickRedPacket.getVersion()!=0){
+        PickRedPacket pickRedPacket = pickRedPackeDao.getPickRedPacketById(packetId);
+        if (pickRedPacket.getRestNumber() == 0 || pickRedPacket.getVersion() != 0) {
             return -2;//活动已结束
         }
         if (session.getAttribute("userName") != null) {
@@ -194,11 +197,11 @@ public class RedPacketService {
             UserInfo user = userService.getUser(userName);
             //加载lua脚本
             redisTemplateUtils.getJedis().scriptLoad(tryGetHongBaoScript);
-            Object object = redisTemplateUtils.getJedis().eval(tryGetHongBaoScript, 4, "redPacket_" + packetId, "useRedPacket_" + packetId, "userRedPacketMap_" + packetId, user.getUserId()+"");
+            Object object = redisTemplateUtils.getJedis().eval(tryGetHongBaoScript, 4, "redPacket_" + packetId, "useRedPacket_" + packetId, "userRedPacketMap_" + packetId, user.getUserId() + "");
 
             if (object != null) {//没有重复领取,且库存大于0
                 String jsonStr = (String) object;
-                jsonStr=jsonStr.replace("\\","").replace("\"{","{").replace("}\"","}");
+                jsonStr = jsonStr.replace("\\", "").replace("\"{", "{").replace("}\"", "}");
                 JSONObject jsonObject = JSONObject.parseObject(jsonStr);
                 //生成红包信息
                 RedPacket redPacket = new RedPacket();
@@ -208,18 +211,36 @@ public class RedPacketService {
                 redPacket.setMoney(jsonObject.getBigDecimal("money"));
                 redPacketDao.insert(redPacket);
                 if (redisTemplateUtils.getJedis().llen("redPacket_" + packetId) == 0) {
-                    saveUserRedPacketByRedis(packetId,0,0);
+                    saveUserRedPacketByRedis(packetId, 0, 0);
                 }
                 return jsonObject.getBigDecimal("money").doubleValue();
             } else {
                 //未消费红包队列长度为0,则表示没有可用红包，触发异步保存到数据库
                 if (redisTemplateUtils.getJedis().llen("redPacket_" + packetId) == 0) {
-                    saveUserRedPacketByRedis(packetId,0,0);
-                }else{
+                    saveUserRedPacketByRedis(packetId, 0, 0);
+                } else {
                     return -1;//重复领取
                 }
             }
         }
         return 0;//失败
+    }
+
+    /**
+     * 得到总记录条数
+     *
+     * @return
+     */
+    public int getCount() {
+        return pickRedPackeDao.countInt();
+    }
+
+    /**
+     * 得到可领取的记录条数
+     *
+     * @return
+     */
+    public int countRestNumber() {
+        return pickRedPackeDao.countRestNumber();
     }
 }

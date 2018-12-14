@@ -1,6 +1,7 @@
 package com.core.controller;
 
 import com.base.model.Picture;
+import com.base.pojo.Page;
 import com.core.service.PictureService;
 import com.core.service.WebService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -49,6 +50,7 @@ public class PictureController {
     public ModelAndView manage() {
         ModelAndView mav = new ModelAndView("admin/photo");
         List<Picture> list = pictureService.getPictureByPage("photo");
+        Page.setTotalCount(pictureService.getCount("photo"));
         for (Picture picture : list) {
             picture.setPictureName(webService.getImgPrefix() + "/" + picture.getPictureName().replace("\\", "/"));
         }

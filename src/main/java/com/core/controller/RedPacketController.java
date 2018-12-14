@@ -1,6 +1,7 @@
 package com.core.controller;
 
 import com.base.model.PickRedPacket;
+import com.base.pojo.Page;
 import com.base.util.DateTimeUtil;
 import com.core.service.RedPacketService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -22,6 +23,7 @@ public class RedPacketController {
     public ModelAndView listRedPacket() {
         ModelAndView mav = new ModelAndView("admin/pickRedPacket");
         List<PickRedPacket> list=redPacketService.getPickRedPacketByPage();
+        Page.setTotalCount(redPacketService.getCount());
         mav.addObject("list", list);
         return mav;
     }

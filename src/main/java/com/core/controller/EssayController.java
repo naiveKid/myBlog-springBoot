@@ -2,6 +2,7 @@ package com.core.controller;
 
 import com.base.model.Essay;
 import com.base.model.Picture;
+import com.base.pojo.Page;
 import com.base.util.CommonUtil;
 import com.base.util.DateTimeUtil;
 import com.core.redis.RedisTemplateUtils;
@@ -45,6 +46,7 @@ public class EssayController {
             show = "doTime";//默认按照时间排序
         }
         List<Essay> list = essayService.getEssayByPage("essay", show);
+        Page.setTotalCount(essayService.getCount("essay"));
         for (Essay essay : list) {
             essay.setPictureName(webService.getImgPrefix() + "/" + essay.getPictureName().replace("\\", "/"));
         }
@@ -87,6 +89,7 @@ public class EssayController {
     public ModelAndView manage() {
         ModelAndView mav = new ModelAndView("admin/essay");
         List<Essay> list = essayService.getEssayByPage("essay", "doTime");
+        Page.setTotalCount(essayService.getCount("essay"));
         for (Essay essay : list) {
             essay.setPictureName(webService.getImgPrefix() + "/" + essay.getPictureName().replace("\\", "/"));
         }

@@ -2,6 +2,7 @@ package com.core.controller;
 
 import com.base.model.Mood;
 import com.base.model.Picture;
+import com.base.pojo.Page;
 import com.base.util.DateTimeUtil;
 import com.core.service.MoodService;
 import com.core.service.PictureService;
@@ -36,6 +37,7 @@ public class MoodController {
     public ModelAndView moodPage() {
         ModelAndView mav = new ModelAndView("mood");
         List<Mood> list = moodService.getMoodByPage();
+        Page.setTotalCount(moodService.getCount());
         for (Mood mood : list) {
             mood.setPictureName(webService.getImgPrefix() + "/" + mood.getPictureName().replace("\\", "/"));
         }
@@ -52,6 +54,7 @@ public class MoodController {
     public ModelAndView manage() {
         ModelAndView mav = new ModelAndView("admin/mood");
         List<Mood> list = moodService.getMoodByPage();
+        Page.setTotalCount(moodService.getCount());
         for (Mood mood : list) {
             mood.setPictureName(webService.getImgPrefix() + "/" + mood.getPictureName().replace("\\", "/"));
         }

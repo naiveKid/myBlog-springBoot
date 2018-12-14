@@ -5,6 +5,7 @@ import com.base.model.Essay;
 import com.base.model.PickRedPacket;
 import com.base.model.Picture;
 import com.base.pojo.LucenePage;
+import com.base.pojo.Page;
 import com.base.util.BeanUtilEx;
 import com.base.util.CommonUtil;
 import com.base.util.JsonUtil;
@@ -198,6 +199,7 @@ public class WebController {
     public ModelAndView other() {
         ModelAndView mav = new ModelAndView("admin/other");
         List<Picture> pictureList = webService.indexPicture();
+        Page.setTotalCount(pictureService.getCount("index"));
         if (pictureList != null) {
             mav.addObject("list", pictureList);
         }
@@ -340,6 +342,7 @@ public class WebController {
     public ModelAndView redPacketPage() {
         ModelAndView mav = new ModelAndView("/redPacket");
         List<PickRedPacket> list = redPacketService.getPickRedPacketRestNumberByPage();
+        Page.setTotalCount(redPacketService.countRestNumber());
         mav.addObject("list", list);
         return mav;
     }
@@ -375,8 +378,6 @@ public class WebController {
     @RequestMapping(value = "/mobileInfoPage")
     public ModelAndView mobileInfoPage() {
         ModelAndView mav = new ModelAndView("/mobileInfo");
-        List<PickRedPacket> list = redPacketService.getPickRedPacketRestNumberByPage();
-        mav.addObject("list", list);
         return mav;
     }
 

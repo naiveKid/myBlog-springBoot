@@ -332,7 +332,7 @@
 <script src="/static/js/mplayer-list.js"></script>
 <script src="/static/js/mplayer-functions.js"></script>
 <script src="/static/js/jquery.nstSlider.min.js"></script>
-<script src="/static/js/page.js"></script>
+<script src="/static/js/page1.js"></script>
 <script>
     function downLoad(fileName, filePathSuffix) {
         window.location.href = "/web/downLoad?fileName="

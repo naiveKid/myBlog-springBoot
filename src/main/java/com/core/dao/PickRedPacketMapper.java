@@ -18,4 +18,8 @@ public interface PickRedPacketMapper {
     List<PickRedPacket> getPickRedPacketRestNumberByPage();
 
     Integer update(PickRedPacket pickRedPacket);
+
+    int countInt();
+
+    int countRestNumber();
 }

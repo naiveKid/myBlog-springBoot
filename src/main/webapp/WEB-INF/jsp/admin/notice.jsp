@@ -65,10 +65,10 @@
                     </c:otherwise>
                 </c:choose>
             </table>
-            <jsp:include page="/WEB-INF/jsp/include/page.jsp">
-                <jsp:param name="link" value="/notice/manage"/>
-            </jsp:include>
         </section>
+        <jsp:include page="/WEB-INF/jsp/include/page.jsp">
+            <jsp:param name="link" value="/notice/manage"/>
+        </jsp:include>
     </aside>
 </div>
 </body>

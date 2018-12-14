@@ -47,20 +47,6 @@ public class PageInterceptor implements Interceptor {
 			BoundSql boundSql = statementHandler.getBoundSql();
 			// 获取原始sql，该sql是预处理的，有参数还没有被设置，被问号代替
 			String sql = boundSql.getSql();
-			// 查询总条数的SQL语句
-			String countSql = "select count(*) from (" + sql + ") xxxxx";
-			Connection connection = (Connection) invocation.getArgs()[0];
-			PreparedStatement countStatement = connection.prepareStatement(countSql);
-			// 为了先查询总条数，所以需要先统计原始sql结果，但是原始sql中参数还没赋值，所以就需要先拿到原始sql的参数处理对象
-			ParameterHandler parameterHandler = (ParameterHandler) metaObject.getValue("delegate.parameterHandler");
-			// 通过反射设置参数
-			parameterHandler.setParameters(countStatement);
-			// 参数被设置以后，直接执行sql语句得到结果集合
-			ResultSet rs = countStatement.executeQuery();
-			// 将查询到的结果集合设置到PageUtil
-			if (rs.next()) {
-				Page.setTotalCount(rs.getInt(1));
-			}
 			// 改造后带分页查询的SQL语句
 			String pageSql = sql + " limit " + Page.getOffset() + "," + Page.getPageSize();
 			// 通过反射将原来的sql给换成加入分页的sql
