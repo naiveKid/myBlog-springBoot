@@ -127,15 +127,13 @@
 		select count(a.essayId) from essay a
 		where 1=1 and a.essayType=#{type}
 	</select>
-	<select id="getEssayByPage" parameterType="com.base.model.Essay"
-		resultType="com.base.model.Essay">
+	<select id="getEssayByPage" parameterType="com.base.model.Essay" resultType="com.base.model.Essay" useCache="false">
 		select a.*,b.pictureName from essay a
 		left join picture b on b.pictureId=a.pictureId
 		where 1=1 and a.essayType=#{essayType,jdbcType=VARCHAR}
 		order by ${showType} desc
 	</select>
-	<select id="getEssayLimitRows" parameterType="com.base.model.Essay"
-		resultType="com.base.model.Essay">
+	<select id="getEssayLimitRows" parameterType="com.base.model.Essay" resultType="com.base.model.Essay">
 		select a.*,b.pictureName from essay a
 		left join picture b on b.pictureId=a.pictureId
 		where 1=1 and a.essayType=#{essayType,jdbcType=VARCHAR}

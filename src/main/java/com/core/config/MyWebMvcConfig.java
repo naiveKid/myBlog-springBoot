@@ -121,8 +121,6 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         // 多个拦截器组成一个拦截器链(添加多个addInterceptor)
         // addPathPatterns 用于添加拦截规则
         // excludePathPatterns 用户排除拦截
-        //国际化
-        registry.addInterceptor(localeChangeInterceptor()).addPathPatterns("/**");
         //分页拦截
         registry.addInterceptor(new PaginationInterceptor()).addPathPatterns("/**");
         //日志拦截
@@ -133,6 +131,8 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         list.add("/picture/manage");
         list.add("/web/other");
         registry.addInterceptor(logInterceptor).addPathPatterns(list);
+        //国际化
+        registry.addInterceptor(localeChangeInterceptor()).addPathPatterns("/**");
     }
 
     /**

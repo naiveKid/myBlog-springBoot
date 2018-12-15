@@ -88,8 +88,7 @@
 		where 1=1 and a.pictureType=#{type,jdbcType=VARCHAR}
 		order by a.pictureId desc
 	</select>
-	<select id="getPictureByPage" parameterType="com.base.model.Picture"
-		resultType="com.base.model.Picture">
+	<select id="getPictureByPage" parameterType="com.base.model.Picture" resultType="com.base.model.Picture"  useCache="false">
 		select a.* from picture a
 		where 1=1 and a.pictureType=#{pictureType,jdbcType=VARCHAR}
 		order by a.pictureId desc

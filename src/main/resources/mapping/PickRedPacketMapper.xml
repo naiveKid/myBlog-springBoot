@@ -26,7 +26,7 @@
       #{version,jdbcType=INTEGER},#{remarks,jdbcType=VARCHAR})
   </insert>
 
-    <select id="getPickRedPacketByPage" resultMap="BaseResultMap">
+    <select id="getPickRedPacketByPage" resultMap="BaseResultMap" useCache="false">
     select id, sumMoney, doTime, number, type, restNumber, version, remarks
     from pickredpacket
     where 1=1
@@ -71,7 +71,7 @@
     order by doTime desc
   </select>
 
-    <select id="getPickRedPacketRestNumberByPage" resultMap="BaseResultMap">
+    <select id="getPickRedPacketRestNumberByPage" resultMap="BaseResultMap" useCache="false">
     select id, sumMoney, doTime, number, type, restNumber, version, remarks
     from pickredpacket
     where 1=1 and restNumber&gt;0 and version=0

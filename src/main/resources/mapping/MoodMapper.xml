@@ -83,7 +83,7 @@
 		select count(a.moodId) from mood a
 		where 1=1
 	</select>
-	<select id="getMoodByPage" resultType="com.base.model.Mood">
+	<select id="getMoodByPage" resultType="com.base.model.Mood" useCache="false">
 		select a.*,b.pictureName from mood a
 		left join picture b on b.pictureId=a.pictureId
 		where 1=1

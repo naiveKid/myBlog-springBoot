@@ -68,7 +68,7 @@
 		select count(a.noticeId) from notice a
 		where 1=1
 	</select>
-	<select id="getNoticeByPage" resultType="com.base.model.Notice">
+	<select id="getNoticeByPage" resultType="com.base.model.Notice" useCache="false">
 		select a.*,b.userName from notice a
 		left join userInfo b on a.doUserId=b.userId
 		where 1=1
