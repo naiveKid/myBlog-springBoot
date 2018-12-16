@@ -1,8 +1,5 @@
 package com.base.util;
 
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -44,10 +41,8 @@ public class WaterPressUtil {
             g.drawImage(src_biao, (wideth - wideth_biao - right), top, wideth_biao, height_biao, null);
             // 水印文件结束
             g.dispose();
-            FileOutputStream out = new FileOutputStream(targetImg);
-            JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-            encoder.encode(image);
-            out.close();
+            String formatName = targetImg.substring(targetImg.lastIndexOf(".") + 1);
+            ImageIO.write(image,formatName , new File(targetImg));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,10 +69,8 @@ public class WaterPressUtil {
             g.drawString(pressText, width - 290, height-5);
             g.rotate(45.00);
             g.dispose();
-            FileOutputStream out = new FileOutputStream(targetImg);
-            JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-            encoder.encode(image);
-            out.close();
+            String formatName = targetImg.substring(targetImg.lastIndexOf(".") + 1);
+            ImageIO.write(image,formatName , new File(targetImg));
         } catch (Exception e) {
             System.out.println(e);
         }
