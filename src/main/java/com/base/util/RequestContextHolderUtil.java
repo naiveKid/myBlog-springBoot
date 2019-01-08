@@ -12,32 +12,35 @@ import javax.servlet.http.HttpSession;
  */
 public class RequestContextHolderUtil {
 
-	/**
-	 * 获取request
-	 * @return
-	 */
-	public static HttpServletRequest getRequest() {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-		request.getSession().getServletContext();
-		return request;
-	}
-	
-	/**
-	 * 获取session
-	 * @return
-	 */
-	public static HttpSession getSession() {
-		HttpSession session = getRequest().getSession();
-		return session;
-	}
-	
-	/**
-	 * 获取ServletContext
-	 * @return
-	 */
-	public static ServletContext getServletContext(){
-		ServletContext servletContext=getSession().getServletContext();
-		return servletContext;
-	}
-	
+    /**
+     * 获取request
+     *
+     * @return
+     */
+    public static HttpServletRequest getRequest() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        request.getSession().getServletContext();
+        return request;
+    }
+
+    /**
+     * 获取session
+     *
+     * @return
+     */
+    public static HttpSession getSession() {
+        HttpSession session = getRequest().getSession();
+        return session;
+    }
+
+    /**
+     * 获取ServletContext
+     *
+     * @return
+     */
+    public static ServletContext getServletContext() {
+        ServletContext servletContext = getSession().getServletContext();
+        return servletContext;
+    }
+
 }

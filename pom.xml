@@ -103,12 +103,6 @@
             <artifactId>mybatis-spring</artifactId>
             <version>1.3.2</version>
         </dependency>
-        <!-- UserAgentUtils 判断浏览器种类 -->
-        <dependency>
-            <groupId>eu.bitwalker</groupId>
-            <artifactId>UserAgentUtils</artifactId>
-            <version>1.21</version>
-        </dependency>
         <!-- druid 数据库连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -138,12 +132,6 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>2.10</version>
-        </dependency>
-        <!-- 生成token -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
         </dependency>
         <!--ikanalyzer 中文分词器 -->
         <dependency>
@@ -184,23 +172,6 @@
             <groupId>com.google.zxing</groupId>
             <artifactId>javase</artifactId>
             <version>3.3.3</version>
-        </dependency>
-        <!-- poi office读写工具类 -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-        <!-- jxl excel工具类 -->
-        <dependency>
-            <groupId>net.sourceforge.jexcelapi</groupId>
-            <artifactId>jxl</artifactId>
-            <version>2.6.12</version>
         </dependency>
         <!-- 常用工具类 -->
         <dependency>
@@ -254,17 +225,20 @@
             <artifactId>shiro-web</artifactId>
             <version>1.4.0</version>
         </dependency>
-        <!-- json -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20160810</version>
-        </dependency>
-        <!-- 谷歌guava工具框架 -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>27.0.1-jre</version>
         </dependency>
     </dependencies>
 

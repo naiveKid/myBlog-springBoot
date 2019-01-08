@@ -22,15 +22,15 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 import org.wltea.analyzer.lucene.IKAnalyzer;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 文章索引
+ */
 @Component
 public class LuceneUtil {
 	// Lucene索引文件路径

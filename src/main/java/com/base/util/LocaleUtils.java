@@ -6,13 +6,14 @@ import java.util.Locale;
 
 /**
  * @Description:
+ * 区域语言
  */
 public class LocaleUtils {
-    public static String getLocale(){
+    public static String getLocale() {
         String LOCALE_SESSION_ATTRIBUTE_NAME = SessionLocaleResolver.class.getName() + ".LOCALE";
-        String locale="zh";
-        if(RequestContextHolderUtil.getRequest().getSession().getAttribute(LOCALE_SESSION_ATTRIBUTE_NAME)!=null){
-            locale = ((Locale)RequestContextHolderUtil.getRequest().getSession().getAttribute(LOCALE_SESSION_ATTRIBUTE_NAME)).getLanguage() ;
+        String locale = "zh";
+        if (RequestContextHolderUtil.getRequest().getSession().getAttribute(LOCALE_SESSION_ATTRIBUTE_NAME) != null) {
+            locale = ((Locale) RequestContextHolderUtil.getRequest().getSession().getAttribute(LOCALE_SESSION_ATTRIBUTE_NAME)).getLanguage();
         }
         return locale;
     }

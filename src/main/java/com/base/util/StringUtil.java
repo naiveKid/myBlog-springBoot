@@ -43,52 +43,6 @@ public class StringUtil {
     }
 
     /**
-     * 把多行文本框里输入并保存到数据库的内容转换成HTML显示
-     *
-     * @param s
-     * @return
-     */
-    public static String toHtml(String s) {
-        s = delNull(s);
-        s = Replace(s, "<", "&lt;");
-        s = Replace(s, ">", "&gt;");
-        s = Replace(s, "\t", "    ");
-        s = Replace(s, "\r\n", "<br>");
-        s = Replace(s, "\n", "<br>");
-        s = Replace(s, " ", "&nbsp;");
-        return s;
-    }
-
-    /**
-     * 把多行文本框里输入并保存到数据库的内容转换成HTML显示
-     *
-     * @param source
-     * @param oldString
-     * @param newString
-     * @return
-     */
-    public static String Replace(String source, String oldString, String newString) {
-        if (source == null) {
-            return "";
-        }
-        StringBuffer output = new StringBuffer();
-        Integer lengOfSource = source.length();
-        Integer lengOfOld = oldString.length();
-        Integer posStart = 0;
-        Integer pos;
-        while ((pos = source.indexOf(oldString, posStart)) >= 0) {
-            output.append(source.substring(posStart, pos));
-            output.append(newString);
-            posStart = pos + lengOfOld;
-        }
-
-        if (posStart < lengOfSource) {
-            output.append(source.substring(posStart));
-        }
-        return output.toString();
-    }
-
-    /**
      * 检查空字符串
      *
      * @param str

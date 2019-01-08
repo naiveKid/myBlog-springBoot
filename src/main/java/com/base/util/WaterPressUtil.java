@@ -75,43 +75,4 @@ public class WaterPressUtil {
             System.out.println(e);
         }
     }
-
-    /**
-     * 复制单个文件
-     *
-     * @param srcFileName  待复制的文件名
-     * @param destFileName 目标文件名
-     */
-    public static boolean copyFile(String srcFileName, String destFileName) {
-        File srcFile = new File(srcFileName);
-        File destFile = new File(destFileName);
-        // 复制文件
-        int byteread = 0; // 读取的字节数
-        InputStream in = null;
-        OutputStream out = null;
-        try {
-            in = new FileInputStream(srcFile);
-            out = new FileOutputStream(destFile);
-            byte[] buffer = new byte[1024];
-            while ((byteread = in.read(buffer)) != -1) {
-                out.write(buffer, 0, byteread);
-            }
-            return true;
-        } catch (FileNotFoundException e) {
-            return false;
-        } catch (IOException e) {
-            return false;
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
