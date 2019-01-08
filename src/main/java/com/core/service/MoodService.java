@@ -83,14 +83,6 @@ public class MoodService {
 	 */
 	@CacheEvict(value = { "mood" },key="'mood_'+#id")
 	public void delMood(int id) {
-		Mood mood=moodDao.selectByPrimaryKey(id);
-		String filePath = RequestContextHolderUtil.getSession().getServletContext().getRealPath("/")+mood.getPictureName();
-		filePath=filePath.replace("/", "\\");
-		filePath=filePath.replace("\\\\", "\\");
-		File file=new File(filePath);
-		if(file.exists()){
-			file.delete();
-		}
 		moodDao.deleteByPrimaryKey(id);
 	}
 }

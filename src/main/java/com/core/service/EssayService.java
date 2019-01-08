@@ -104,14 +104,6 @@ public class EssayService {
 	 */
 	public void delEssay(int id){
 		Essay essay = essayDao.selectByPrimaryKey(id);
-		// 删除对应的图片文件
-		String filePath = RequestContextHolderUtil.getSession().getServletContext().getRealPath("/")+ essay.getPictureName();
-		filePath = filePath.replace("/", "\\");
-		filePath = filePath.replace("\\\\", "\\");
-		File file = new File(filePath);
-		if (file.exists()) {
-			file.delete();
-		}
 		// 删除索引
 		if("essay".equals(essay.getEssayType())){
 			webService.deleteIndex(essay);

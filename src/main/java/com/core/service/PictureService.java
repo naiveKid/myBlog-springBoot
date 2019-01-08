@@ -95,15 +95,6 @@ public class PictureService {
      */
     @CacheEvict(value = {"picture"}, key = "'picture_'+#id")
     public void delPicture(int id) {
-        //删除文件
-        Picture picture = pictureDao.selectByPrimaryKey(id);
-        String filePath = RequestContextHolderUtil.getSession().getServletContext().getRealPath("/") + picture.getPictureName();
-        filePath = filePath.replace("/", "\\");
-        filePath = filePath.replace("\\\\", "\\");
-        File file = new File(filePath);
-        if (file.exists()) {
-            file.delete();
-        }
         pictureDao.deleteByPrimaryKey(id);
     }
 
