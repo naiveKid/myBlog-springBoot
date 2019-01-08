@@ -124,13 +124,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         //分页拦截
         registry.addInterceptor(new PaginationInterceptor()).addPathPatterns("/**");
         //日志拦截
-        List<String> list = new ArrayList<>();
-        list.add("/web/manage");
-        list.add("/mood/manage");
-        list.add("/essay/manage");
-        list.add("/picture/manage");
-        list.add("/web/other");
-        registry.addInterceptor(logInterceptor).addPathPatterns(list);
+        registry.addInterceptor(logInterceptor).addPathPatterns("/**");
         //国际化
         registry.addInterceptor(localeChangeInterceptor()).addPathPatterns("/**");
     }

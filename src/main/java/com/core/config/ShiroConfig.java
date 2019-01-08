@@ -18,13 +18,13 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-
 import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +34,18 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
+    // 用户登录验证失败后跳转的URL
+    @Value("${website.redirectUri}")
+    private String redirectUri;
+
+    public String getRedirectUri() {
+        return redirectUri;
+    }
+
+    public void setRedirectUri(String redirectUri) {
+        this.redirectUri = redirectUri;
+    }
 
     @Bean
     public JedisPoolConfig jedisPoolConfig() {
@@ -126,9 +138,7 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        shiroFilterFactoryBean.setLoginUrl("/login.jsp");//登陆链接
-        shiroFilterFactoryBean.setSuccessUrl("/web/manage");//登陆成功默认跳转的页面(只有在没有设置渲染视图时,才生效)
-        shiroFilterFactoryBean.setUnauthorizedUrl("/login.jsp");//没有权限默认跳转的页面(已配置全局异常处理,此处不生效)
+        shiroFilterFactoryBean.setLoginUrl(getRedirectUri());//登陆链接
         Map<String, String> map = new HashMap<>();
         map.put("/notice/addNotice", "roleAny[\"admin\",\"user\"]");//必须拥有admin或user之中的一个角色
         map.put("/web/redPacket", "roleAny[\"admin\",\"user\"]");//必须拥有admin或user之中的一个角色

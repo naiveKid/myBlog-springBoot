@@ -128,7 +128,7 @@ public class EssayService {
 			}
 		}
 		++clickNum;
-        redisTemplateUtils.set("essayId_"+essay.getEssayId()+"_click", clickNum,300);
+        redisTemplateUtils.set("essayId_"+essay.getEssayId()+"_click", clickNum,7200);
 		return clickNum;
 	}
 }

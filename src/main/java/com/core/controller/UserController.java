@@ -157,15 +157,11 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping("/exitAjax")
-    public String exitAjax(HttpSession session) {
-        //多处登录
-        String userName1 = (String) session.getAttribute("userName");
-        if (!CommonUtil.isNull(userName1)) {
-            //注销登陆
-            Subject subject = SecurityUtils.getSubject();
-            subject.logout();
-            return "{\"info\":\"alert\"}";
-        }
-        return "{\"info\":\"success\"}";
+    public String exitAjax() {
+        //同一账号多处登录，服务器主动断开当前session的用户连接
+        //注销登陆
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "{\"info\":\"alert\"}";
     }
 }

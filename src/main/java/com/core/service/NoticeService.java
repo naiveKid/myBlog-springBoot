@@ -41,19 +41,13 @@ public class NoticeService {
 	 * @param content
 	 * @return
 	 */
-	public boolean addNotice(String content) {
-		HttpSession session = RequestContextHolderUtil.getSession();
-		if (session.getAttribute("userName") != null) {
-			String userName = (String) session.getAttribute("userName");
-			UserInfo user = userService.getUser(userName);
-			Notice notice = new Notice();
-			notice.setContent(content);
-			notice.setDoUserId(user.getUserId());
-			noticeDao.insertSelective(notice);
-			return true;
-		} else {
-			return false;
-		}
+	public void addNotice(String content) {
+		String userName = (String) RequestContextHolderUtil.getSession().getAttribute("userName");
+		UserInfo user = userService.getUser(userName);
+		Notice notice = new Notice();
+		notice.setContent(content);
+		notice.setDoUserId(user.getUserId());
+		noticeDao.insertSelective(notice);
 	}
 
 	/**

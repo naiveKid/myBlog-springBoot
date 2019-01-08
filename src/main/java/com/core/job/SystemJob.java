@@ -71,10 +71,10 @@ public class SystemJob {
 
     /**
      * 定时同步redis存放的文章点击数到数据库
-     * 单位毫秒，小于redis过期时间300秒即可
+     * 单位毫秒，小于redis过期时间7200秒即可
      * @return: void
      */
-    @Scheduled(initialDelay = 20000, fixedDelay = 20000)
+    @Scheduled(initialDelay = 20000, fixedDelay = 3600000)
     public void createRedisJob() {
         Set<Object> keyList = redisTemplateUtils.keys("essayId_"+"*");//模糊搜索
         for (Object o : keyList) {

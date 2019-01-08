@@ -33,6 +33,8 @@ public class RedPacketController {
      *
      * @return
      */
+    //是否具有admin角色
+    @RequiresRoles("admin")
     @RequestMapping("/addPage")
     public ModelAndView addPage() {
         ModelAndView mav = new ModelAndView("admin/addPickRedPacket");

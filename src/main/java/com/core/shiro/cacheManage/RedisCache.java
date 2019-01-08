@@ -35,7 +35,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
         byte[] key = getKey(k);
         byte[] value = SerializationUtils.serialize(v);
         jedisUtil.set(key, value);
-        jedisUtil.expire(key, 600);
+        jedisUtil.expire(key, 7200);
         return v;
     }
 

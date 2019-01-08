@@ -53,14 +53,9 @@ public class NoticeController {
 	@RequestMapping("/addNotice")
 	public ModelAndView addNotice(String content) {
 		ModelAndView mav = new ModelAndView("blank");
-		boolean flag = noticeService.addNotice(content);
-		if (flag) {
-			mav.addObject("msg", "留言成功!");
-			mav.addObject("gotoPage", "notice/index");
-		} else {
-			mav.addObject("msg", "您还未登录!");
-			mav.addObject("gotoPage", "login.jsp");
-		}
+		noticeService.addNotice(content);
+		mav.addObject("msg", "留言成功!");
+		mav.addObject("gotoPage", "notice/index");
 		return mav;
 	}
 

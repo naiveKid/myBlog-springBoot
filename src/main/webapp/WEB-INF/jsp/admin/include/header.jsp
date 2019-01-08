@@ -102,16 +102,15 @@
             async: false,
             type: 'post',
             url: '/user/exitAjax',
-            data: {'userName': '${param.userName}'},
             dataType: 'json',
-            success: function (data) {
+            success: function (data) {//服务器主动断开
                 //返回登录页面
                 if (data.info == 'alert') {
                     alert("您的账号在其他地方登录，如非本人操作请重新登录并修改密码！");
                     window.location.href = '/login.jsp';
                 }
             },
-            error: function (e) {
+            error: function (e) {//网络问题导致的连接断开
                 alert("与服务器断开连接，请检查网络设置是否正确！");
             }
         });
@@ -145,6 +144,7 @@
     }
 
     function initEventHandle() {
+        //服务器主动断开、网络问题导致的断开
         websocket.onclose = function () {
             //注销登录
             exitAjax();
@@ -205,5 +205,4 @@
             window.event.returnValue = false;
         }
     }
-
 </script>
