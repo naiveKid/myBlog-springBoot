@@ -2,14 +2,12 @@ package com.core.service;
 
 import com.base.pojo.Page;
 import com.base.model.OperationLog;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -31,7 +29,7 @@ public class SystemLogService {
      * 分页查询系统日志
      * @return
      */
-    public PageInfo<OperationLog> listPagedOperationLog() {
+    public List<OperationLog> listPagedOperationLog() {
         Query query = new Query();
         query.skip(Page.getOffset());// 从那条记录开始
         query.limit(Page.getPageSize());// 取多少条记录
@@ -39,8 +37,7 @@ public class SystemLogService {
         List<OperationLog> list = mongoTemplate.find(query, OperationLog.class);//得到operationLog集合中符合条件的文档记录
         long count = mongoTemplate.count(query, OperationLog.class);//得到operationLog集合中文档的条数
         Page.setTotalCount((int) count);
-        PageInfo<OperationLog> page = new PageInfo<OperationLog>(list);
-        return page;//返回分页对象
+        return list;//返回分页对象
     }
 
     /**

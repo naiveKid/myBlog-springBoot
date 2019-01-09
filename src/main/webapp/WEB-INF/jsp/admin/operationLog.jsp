@@ -36,8 +36,8 @@
                 </tr>
                 </thead>
                 <c:choose>
-                    <c:when test="${not empty page}">
-                        <c:forEach items="${page.list }" var="obj" varStatus="stat">
+                    <c:when test="${not empty list}">
+                        <c:forEach items="${list}" var="obj" varStatus="stat">
                             <tr>
                                 <td id="sort${obj.id}">${stat.count}</td>
                                 <td>${obj.userName}</td>

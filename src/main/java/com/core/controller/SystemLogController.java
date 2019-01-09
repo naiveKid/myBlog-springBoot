@@ -2,7 +2,6 @@ package com.core.controller;
 
 import com.base.model.OperationLog;
 import com.core.service.SystemLogService;
-import com.github.pagehelper.PageInfo;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/systemLog")
@@ -26,8 +27,8 @@ public class SystemLogController {
     @RequestMapping(value = "/listPagedOperationLog")
     public ModelAndView listPagedOperationLog() {
         ModelAndView mav = new ModelAndView("/admin/operationLog");
-        PageInfo<OperationLog> page = systemLogService.listPagedOperationLog();
-        mav.addObject("page", page);
+        List<OperationLog> list = systemLogService.listPagedOperationLog();
+        mav.addObject("list", list);
         return mav;
     }
 
