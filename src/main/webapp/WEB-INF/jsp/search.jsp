@@ -55,11 +55,11 @@
                     </figure>
                     <ul class="nlist">
                         <p>
-                            <c:if test="${fn:length(essay.text)>500}">
-                                ${fn:substring(essay.text,0,500)}...
+                            <c:if test="${fn:length(essay.content)>500}">
+                                ${fn:substring(essay.content,0,500)}...
                             </c:if>
-                            <c:if test="${fn:length(essay.text)<=500}">
-                                ${essay.text}
+                            <c:if test="${fn:length(essay.content)<=500}">
+                                ${essay.content}
                             </c:if>
                         </p>
                         <a href="/essay/detail/${essay.essayId}" title="${essay.title}" target="_top" class="readmore">阅读全文&gt;&gt;</a>

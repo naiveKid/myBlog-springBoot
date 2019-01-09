@@ -8,21 +8,16 @@
     <jsp:include page="/WEB-INF/jsp/admin/include/header.jsp"/>
     <link rel="stylesheet" type="text/css" href="/static/css/webuploader.css">
     <script type="text/javascript" src="/static/js/webuploader.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/ueditor.all.min.js"></script>
-    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
-    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/lang/zh-cn/zh-cn.js"></script>
+    <!-- ckeditor5 -->
+    <link type="text/css" href="/static/js/ckeditor5/sample/css/sample.css" rel="stylesheet"/>
     <title>mood</title>
     <script type="text/javascript">
         function addCheck() {
-            var pictureName = document.getElementById("pictureName").value;
-            if (pictureName == "") {
+            var pictureId = document.getElementById("pictureId").value;
+            if (pictureId == "") {
                 layer.alert('文件名不能为空!', {icon: 2});
-                document.getElementById("pictureName").focus();
                 return false;
             }
-            getContent();
             // 提交表单
             document.forms["addMoodForm"].submit();
         }
@@ -42,11 +37,11 @@
         <jsp:param name="type" value="2"/>
     </jsp:include>
     <aside id="rightMenu" class="right-side">
-        <section
-                class="content">
-            <form id="addMoodForm" name="addMoodForm" action="/mood/add"
-                  method="post">
-                <table class="bordered">
+        <section class="content">
+            <form id="addMoodForm" name="addMoodForm" action="/mood/add" method="post">
+                <input type="hidden" name="pictureName" id="pictureName" value="">
+                <input type="hidden" name="pictureId" id="pictureId" value="">
+                <table class="layui-table">
                     <tr>
                         <td colspan="2" height="40"><strong style="font-size: 20px;">添加心情信息</strong></td>
                     </tr>
@@ -55,33 +50,37 @@
                         <td height="30" style="font-size: 18px;">
                             <div id="uploader">
                                 <!-- 选择文件区域 -->
-                                <div id="filePicker" style="width: 40%;float: left;text-align: right;">选择文件</div>
+                                <div id="filePicker" style="float: left;"><i class="layui-icon">&#xe67c;</i>上传图片</div>
                                 <!-- 显示文件列表信息 -->
-                                <ul id="fileList" style="float: left;"></ul>
+                                <ul id="fileList" style="float: left;margin-left:10px;"></ul>
                             </div>
-                            <input type="hidden" name="pictureName" id="pictureName" value="">
-                            <input type="hidden" name="pictureId" id="pictureId" value="">
                         </td>
                     </tr>
                     <tr>
                         <td height="30" style="font-size: 18px;">心情内容</td>
                         <td height="30" style="font-size: 18px;">
-                            <script id="editor" type="text/plain" style="width:100%;height:200px;"></script>
-                            <input id="content" name="content" type="hidden" value="">
-                            <input id="text" name="text" type="hidden" value="">
+                            <textarea style="width:100%;box-sizing:border-box; -webkit-box-sizing:border-box;-moz-box-sizing:border-box;-o-box-sizing:border-box;resize:none" id="editor" name="content" class="layui-textarea"></textarea>
                         </td>
                     </tr>
                 </table>
                 <br/> <br/> <br/>
                 <center>
-                    <input type="button" class="mybtn" value="确定" onclick="addCheck();"/>
-                    <input type="button" class="blue" value="返回" onclick="goBack();"/>
+                    <input type="button" class="layui-btn" value="确定" onclick="addCheck();"/>
+                    <input type="button" class="layui-btn layui-btn-danger" value="返回" onclick="goBack();"/>
                 </center>
             </form>
         </section>
     </aside>
 </div>
 <jsp:include page="./include/uploader.jsp"></jsp:include>
-<jsp:include page="./include/UEeditor.jsp"></jsp:include>
+<script src="/static/js/ckeditor5/ckeditor.js"></script>
+<script>
+    ClassicEditor.create( document.querySelector( '#editor' ), {
+    } ).then( editor => {
+        window.editor = editor;
+    } ).catch( err => {
+        console.error( err.stack );
+    } );
+</script>
 </body>
 </html>

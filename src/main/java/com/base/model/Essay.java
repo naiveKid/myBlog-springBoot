@@ -34,10 +34,6 @@ public class Essay implements Serializable {
     @ApiModelProperty(notes = "带格式文章内容")
 	private String content;
 
-	//带格式的纯文本
-    @ApiModelProperty(notes = "带格式的纯文本")
-	private String text;
-	
 	//点击次数
     @ApiModelProperty(notes = "点击次数")
 	private Integer clickNum;
@@ -147,14 +143,6 @@ public class Essay implements Serializable {
 
 	public void setRows(Integer rows) {
 		this.rows = rows;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
 	}
 
 	public Integer getSearchtimes() {

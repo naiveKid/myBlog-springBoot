@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="/WEB-INF/tld/c.tld" %>
 <%@taglib prefix="fn" uri="/WEB-INF/tld/fn.tld" %>
 <%@taglib prefix="fmt" uri="/WEB-INF/tld/fmt.tld" %>
@@ -22,12 +22,15 @@
                     <td height="40" align="center"><strong style="font-size: 20px;">相片列表</strong></td>
                 </tr>
             </table>
-            <p>
-                <a style="margin-left: 1%; color: black;" href="/picture/addPage">更多操作：
-                    <font color="red">发表新相册</font>
-                </a>
-            </p>
-            <table class="bordered">
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                <p style="font-size: 14px;">
+                    更多操作
+                    <a style="margin-left: 1%; color: black;" href="/picture/addPage">
+                        <font color="red">发表新相册</font>
+                    </a>
+                </p>
+            </blockquote>
+            <table class="layui-table">
                 <thead>
                 <tr>
                     <th width="5%">序号</th>

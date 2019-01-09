@@ -79,11 +79,11 @@
                                         </c:if>
                                     </a>
                                 </h3>
-                                <c:if test="${fn:length(essay.text)>100}">
-                                    ${fn:substring(essay.text,0,100)}...
+                                <c:if test="${fn:length(essay.content)>100}">
+                                    ${fn:substring(essay.content,0,100)}...
                                 </c:if>
-                                <c:if test="${fn:length(essay.text)<=100}">
-                                    ${essay.text}
+                                <c:if test="${fn:length(essay.content)<=100}">
+                                    ${essay.content}
                                 </c:if>
                                 <p class="autor">
                                     <span class="lm f_l"><a>个人博客</a></span>

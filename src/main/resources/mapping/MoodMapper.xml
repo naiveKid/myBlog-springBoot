@@ -7,10 +7,9 @@
 		<result column="doTime" jdbcType="VARCHAR" property="doTime" />
 		<result column="content" jdbcType="LONGVARCHAR" property="content" />
 		<result column="pictureId" jdbcType="INTEGER" property="pictureId" />
-		<result column="text" jdbcType="LONGVARCHAR" property="text" />
 	</resultMap>
 	<sql id="All_Column_List">
-		a.moodId, a.doTime, a.pictureId,a.content,a.text
+		a.moodId, a.doTime, a.pictureId,a.content
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.base.model.Mood">
 		select
@@ -39,9 +38,6 @@
 			<if test="content != null">
 				content,
 			</if>
-			<if test="text != null">
-				text,
-			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="moodId != null">
@@ -56,9 +52,6 @@
 			<if test="content != null">
 				#{content,jdbcType=LONGVARCHAR},
 			</if>
-			<if test="text != null">
-				#{text,jdbcType=LONGVARCHAR},
-			</if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" useGeneratedKeys="true" keyProperty="moodId" parameterType="com.base.model.Mood" flushCache="true">
@@ -72,9 +65,6 @@
 			</if>
 			<if test="content != null">
 				content = #{content,jdbcType=LONGVARCHAR},
-			</if>
-			<if test="text != null">
-				text=#{text,jdbcType=LONGVARCHAR},
 			</if>
 		</set>
 		where moodId = #{moodId,jdbcType=INTEGER}

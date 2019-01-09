@@ -10,7 +10,7 @@
     <link href="/static/css/notice.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/page.css" type="text/css">
     <link rel="stylesheet" href="/static/css/buttons.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/layui.css">
+    <link rel="stylesheet" href="/static/js/layui/css/layui.css">
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
     <!-- layer -->
     <script src="/static/js/layer/layer.js" type="text/javascript"></script>

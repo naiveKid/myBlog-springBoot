@@ -11,7 +11,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="/user/logout" class="dropdown-toggle">
+                    <a href="javascript:logout();" class="dropdown-toggle">
                         <i class="fa fa-power-off"></i>
                         <span>注销</span>
                     </a>

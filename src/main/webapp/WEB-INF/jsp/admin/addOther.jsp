@@ -11,10 +11,9 @@
     <title>other</title>
     <script type="text/javascript">
         function alterCheck() {
-            var pictureName = document.getElementById("pictureName").value;
-            if (pictureName == "") {
+            var pictureId = document.getElementById("pictureId").value;
+            if (pictureId == "") {
                 layer.alert("上传文件不能为空!", {icon: 2});
-                document.getElementById("pictureName").focus();
                 return false;
             }
             // 提交表单
@@ -37,9 +36,10 @@
     </jsp:include>
     <aside id="rightMenu" class="right-side">
         <section class="content">
-            <form id="addOtherForm" name="addOtherForm" action="/web/other/add"
-                  method="post">
-                <table class="bordered">
+            <form id="addOtherForm" name="addOtherForm" action="/web/other/add" method="post">
+                <input type="hidden" name="pictureId" id="pictureId" value="">
+                <input type="hidden" name="pictureName" id="pictureName" value="">
+                <table class="layui-table">
                     <tr>
                         <td colspan="2" height="40"><strong style="font-size: 20px;">新增幻灯片信息</strong></td>
                     </tr>
@@ -48,19 +48,19 @@
                         <td height="40" style="font-size: 18px;">
                             <div id="uploader">
                                 <!-- 选择文件区域 -->
-                                <div id="filePicker" style="width: 40%;float: left;text-align: right;">选择文件</div>
+                                <div id="filePicker" style="float: left;">
+                                    <i class="layui-icon">&#xe67c;</i>上传图片
+                                </div>
                                 <!-- 显示文件列表信息 -->
-                                <ul id="fileList" style="float: left;"></ul>
+                                <ul id="fileList" style="float: left;margin-left:10px;"></ul>
                             </div>
-                            <input type="hidden" name="pictureId" id="pictureId" value="">
-                            <input type="hidden" name="pictureName" id="pictureName" value="">
                         </td>
                     </tr>
                 </table>
                 <br/> <br/> <br/>
                 <center>
-                    <input type="button" class="mybtn" value="确定" onclick="alterCheck();"/>
-                    <input type="button" class="blue" value="返回" onclick="goBack();"/>
+                    <input type="button" class="layui-btn" value="确定" onclick="alterCheck();"/>
+                    <input type="button" class="layui-btn layui-btn-danger" value="返回" onclick="goBack();"/>
                 </center>
             </form>
         </section>

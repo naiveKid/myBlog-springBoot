@@ -11,10 +11,9 @@
     <title>Photo</title>
     <script type="text/javascript">
         function addCheck() {
-            var pictureName = document.getElementById("pictureName").value;
-            if (pictureName == "") {
+            var pictureId = document.getElementById("pictureId").value;
+            if (pictureId == "") {
                 layer.alert('文件名不能为空!', {icon: 2});
-                document.getElementById("pictureName").focus();
                 return false;
             }
             var pictureTitle = document.getElementById("pictureTitle").value;
@@ -50,7 +49,10 @@
     <aside id="rightMenu" class="right-side">
         <section class="content">
             <form id="addPhotoForm" name="addPhotoForm" action="/picture/add" method="post">
-                <table class="bordered">
+                <input type="hidden" name="pictureId" id="pictureId" value="">
+                <input type="hidden" name="pictureName" id="pictureName" value="">
+                <input type="hidden" name="pictureType" id="pictureType" value="photo">
+                <table class="layui-table">
                     <tr>
                         <td colspan="2" height="40"><strong style="font-size: 20px;">添加相片信息</strong></td>
                     </tr>
@@ -59,32 +61,29 @@
                         <td height="40" style="font-size: 18px;">
                             <div id="uploader">
                                 <!-- 选择文件区域 -->
-                                <div id="filePicker" style="width: 40%;float: left;text-align: right;">选择文件</div>
+                                <div id="filePicker" style="float: left;"><i class="layui-icon">&#xe67c;</i>上传图片</div>
                                 <!-- 显示文件列表信息 -->
-                                <ul id="fileList" style="float: left;"></ul>
+                                <ul id="fileList" style="float: left;margin-left:10px;"></ul>
                             </div>
-                            <input type="hidden" name="pictureId" id="pictureId" value="">
-                            <input type="hidden" name="pictureName" id="pictureName" value="">
-                            <input type="hidden" name="pictureType" id="pictureType" value="photo">
                         </td>
                     </tr>
                     <tr>
                         <td height="30" style="font-size: 18px;">相片标题</td>
                         <td height="30" style="font-size: 18px;">
-                            <input type="text" style="width:90%;height:24px;" name="pictureTitle" id="pictureTitle" value="">
+                            <input type="text" style="width:90%;height:24px;" name="pictureTitle" class="layui-input" id="pictureTitle" value="">
                         </td>
                     </tr>
                     <tr>
                         <td height="30" style="font-size: 18px;">相片描述</td>
                         <td height="30" style="font-size: 18px;">
-                            <input type="text" style="width:90%;height:24px;" name="pictureContent" id="pictureContent" value="">
+                            <input type="text" style="width:90%;height:24px;" name="pictureContent" class="layui-input" id="pictureContent" value="">
                         </td>
                     </tr>
                 </table>
                 <br/> <br/> <br/>
                 <center>
-                    <input type="button" class="mybtn" value="确定" onclick="addCheck();"/>
-                    <input type="button" class="blue" value="返回" onclick="goBack();"/>
+                    <input type="button" class="layui-btn" value="确定" onclick="addCheck();"/>
+                    <input type="button" class="layui-btn layui-btn-danger" value="返回" onclick="goBack();"/>
                 </center>
             </form>
         </section>

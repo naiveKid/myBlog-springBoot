@@ -110,7 +110,7 @@ public class WebService {
         Document doc = new Document();
         // 获取每列数据
         Field essayId = new Field("essayId", essay.getEssayId().toString(), TextField.TYPE_STORED);
-        Field text = new Field("text", essay.getText().toString(), TextField.TYPE_STORED);
+        Field text = new Field("text", essay.getContent().toString(), TextField.TYPE_STORED);
         // 添加到Document中
         doc.add(essayId);
         doc.add(text);

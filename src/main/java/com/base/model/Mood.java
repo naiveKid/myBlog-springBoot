@@ -19,9 +19,6 @@ public class Mood implements Serializable {
 
 	private String content;
 
-	// 带格式的纯文本
-	private String text;
-
 	/* 图片路径 */
 	private String pictureName;
 
@@ -63,13 +60,5 @@ public class Mood implements Serializable {
 
 	public void setPictureName(String pictureName) {
 		this.pictureName = pictureName;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
 	}
 }

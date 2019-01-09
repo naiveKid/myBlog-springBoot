@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="/WEB-INF/tld/c.tld" %>
 <%@taglib prefix="fn" uri="/WEB-INF/tld/fn.tld" %>
 <%@taglib prefix="fmt" uri="/WEB-INF/tld/fmt.tld" %>
@@ -20,11 +20,11 @@
 <jsp:include page="/WEB-INF/jsp/admin/include/top.jsp"/>
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <jsp:include page="/WEB-INF/jsp/admin/include/left.jsp">
-        <jsp:param name="type" value="6"/>
+        <jsp:param name="type" value="7"/>
     </jsp:include>
     <aside id="rightMenu" class="right-side">
         <section class="content">
-            <table class="bordered">
+            <table class="layui-table">
                 <tr>
                     <td colspan="2" height="40"><strong style="font-size: 20px;">日志详情</strong></td>
                 </tr>
@@ -67,7 +67,7 @@
             </table>
             <br/>
             <center>
-                <input type="button" class="blue" value="返回" onclick="goBack();"/>
+                <input type="button" class="layui-btn layui-btn-danger" value="返回" onclick="goBack();"/>
             </center>
             </form>
         </section>

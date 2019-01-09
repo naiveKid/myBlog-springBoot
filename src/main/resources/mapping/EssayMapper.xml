@@ -11,10 +11,9 @@
 		<result column="essayType" jdbcType="VARCHAR" property="essayType" />
 		<result column="clickNum" jdbcType="INTEGER" property="clickNum" />
 		<result column="showLevel" jdbcType="INTEGER" property="showLevel" />
-		<result column="text" jdbcType="LONGVARCHAR" property="text" />
 	</resultMap>
 	<sql id="All_Column_List">
-		a.essayId, a.title, a.doTime, a.pictureId, a.essayType,a.content,a.clickNum,a.showLevel,a.text
+		a.essayId, a.title, a.doTime, a.pictureId, a.essayType,a.content,a.clickNum,a.showLevel
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.base.model.Essay">
 		select
@@ -55,9 +54,6 @@
 			<if test="showLevel != null">
 				showLevel,
 			</if>
-			<if test="text != null">
-				text,
-			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="essayId != null">
@@ -84,9 +80,6 @@
 			<if test="showLevel != null">
 				#{showLevel,jdbcType=INTEGER},
 			</if>
-			<if test="text != null">
-				#{text,jdbcType=LONGVARCHAR},
-			</if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" useGeneratedKeys="true" keyProperty="essayId" parameterType="com.base.model.Essay" flushCache="true">
@@ -112,9 +105,6 @@
 			</if>
 			<if test="showLevel != null">
 				showLevel = #{showLevel,jdbcType=INTEGER},
-			</if>
-			<if test="text != null">
-				text=#{text,jdbcType=LONGVARCHAR},
 			</if>
 		</set>
 		where essayId = #{essayId,jdbcType=INTEGER}

@@ -163,7 +163,7 @@ public class LuceneUtil {
 			//出现的次数
 			String highLightText = highlighter.getBestFragment(new StandardAnalyzer(Version.LUCENE_47), field,  hitDoc.get(field));
 			essay.setSearchtimes(highLightText.split("<font color=red>").length-1);
-			essay.setText(highLightText);
+			essay.setContent(highLightText);
 			list.add(essay);
 		}
 		lucenePage.setList(list);//分页集合

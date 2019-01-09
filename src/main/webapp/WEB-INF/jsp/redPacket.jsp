@@ -32,7 +32,7 @@
             text-align: center;
             background: rgba(202, 106, 255, 0.2);
             border-color: #fff;
-            color:#ff5c69;
+            color: #ff5c69;
             display: none;
             cursor: pointer;
             z-Index: 999;
@@ -41,7 +41,7 @@
     <script>
         function doRedPacket(packetId) {
             showZz();
-            $.post('/web/doRedPacket?_method=put',{'packetId':packetId},
+            $.post('/web/doRedPacket?_method=put', {'packetId': packetId},
                 function (result) {
                     layer.alert(result, {icon: 1});
                     hiddenZz();

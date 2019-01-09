@@ -95,7 +95,9 @@ public class WebController {
         ModelAndView mav = new ModelAndView("admin/index");
         AboutMe aboutMe = aboutMeService.getAboutMe();
         if (aboutMe != null) {
-            aboutMe.setPictureName(webService.getImgPrefix() + "/" + aboutMe.getPictureName().replace("\\", "/"));
+            if (aboutMe.getPictureName() != null) {
+                aboutMe.setPictureName(webService.getImgPrefix() + "/" + aboutMe.getPictureName().replace("\\", "/"));
+            }
             Essay essay = essayService.getEssayById(aboutMe.getEssayId());
             if (essay != null) {
                 mav.addObject("essay", essay);

@@ -36,7 +36,6 @@ CREATE TABLE `essay` (
   `essayType` varchar(255) DEFAULT NULL,
   `clickNum` int(11) DEFAULT NULL,
   `showLevel` int(11) DEFAULT NULL,
-  `text` mediumtext,
   PRIMARY KEY (`essayId`),
   UNIQUE KEY `essayId` (`essayId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -44,7 +43,7 @@ CREATE TABLE `essay` (
 -- ----------------------------
 -- Records of essay
 -- ----------------------------
-INSERT INTO `essay` VALUES ('1', '这只是一个小小的测试而已。', '2017年06月03日22时56分44秒', '不要紧张，很刺激的啊。', '0', 'aboutMe', '0', '0', '不要紧张，很刺激的啊。');
+INSERT INTO `essay` VALUES ('1', '这只是一个小小的测试而已。', '2017年06月03日22时56分44秒', '不要紧张，很刺激的啊。', '0', 'aboutMe', '0', '0');
 
 -- ----------------------------
 -- Table structure for `mood`
@@ -55,7 +54,6 @@ CREATE TABLE `mood` (
   `doTime` varchar(50) NOT NULL,
   `content` mediumtext NOT NULL,
   `pictureId` int(11) DEFAULT NULL,
-  `text` mediumtext NOT NULL,
   PRIMARY KEY (`moodId`),
   UNIQUE KEY `moodId` (`moodId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

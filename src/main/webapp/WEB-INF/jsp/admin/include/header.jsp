@@ -1,21 +1,25 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<!-- jquery -->
+<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
 <!-- bootstrap 3.0.2 -->
 <link href="/static/css/admin/bootstrap.css" rel="stylesheet" type="text/css"/>
-<!-- font Awesome -->
+<!-- Bootstrap js-->
+<script src="/static/js/bootstrap.js" type="text/javascript"></script>
+<!-- layui 表格样式-->
+<link rel="stylesheet" href="/static/js/layui/css/layui.css">
+<!-- font Awesome 矢量图标-->
 <link href="/static/css/admin/font-awesome.css" rel="stylesheet" type="text/css"/>
 <!-- Theme style -->
 <link href="/static/css/admin/style.css" rel="stylesheet" type="text/css"/>
-<link href="/static/css/admin/table.css" rel="stylesheet" type="text/css"/>
+<!-- 分页样式 -->
 <link href="/static/css/page.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="/static/js/sockjs.js"></script>
 <!-- jQuery UI 1.10.3 -->
 <script src="/static/js/jquery-ui-1.10.3.js" type="text/javascript"></script>
-<!-- Bootstrap -->
-<script src="/static/js/bootstrap.js" type="text/javascript"></script>
 <!-- layer -->
 <script src="/static/js/layer/layer.js" type="text/javascript"></script>
+<!-- sock连接 -->
+<script type="text/javascript" src="/static/js/sockjs.js"></script>
 <script>
     /**
      * 判断字符串是否为空值
@@ -210,6 +214,12 @@
     function del(url) {
         layer.confirm('确认要删除？',{icon: 3, title:'提示'}, function(index){
            window.location.href=url;
+        });
+    }
+
+    function logout(){
+        layer.confirm('是否注销？',{icon: 3, title:'提示'}, function(index){
+            window.location.href="/user/logout";
         });
     }
 </script>

@@ -1,4 +1,4 @@
-<%@page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@page language="java" contentType="text/html; charset=utf-8" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -55,7 +55,7 @@
                         onClick="reloadCode1();">看不清换一张</span>
                 </div>
                 <div style="width:80px;float: right;">
-                   <input type="checkbox" name="rememberMe"/><font style="font-size:12px;">记住我</font>
+                    <input type="checkbox" name="rememberMe"/><font style="font-size:12px;">记住我</font>
                 </div>
                 <input id="loginSubmit" value="登 录"
                        class="f18 white bg-red w423 mt20 bn" type="button"

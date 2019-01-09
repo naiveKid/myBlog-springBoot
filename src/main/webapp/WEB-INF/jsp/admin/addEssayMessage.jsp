@@ -40,21 +40,21 @@
     </jsp:include>
     <aside id="rightMenu" class="right-side">
         <section class="content">
-            <table class="bordered">
+            <table class="layui-table">
                 <tr>
                     <td colspan="2" height="40"><strong style="font-size: 20px;">添加订阅发布信息</strong></td>
                 </tr>
                 <tr>
                     <td height="30" style="font-size: 18px;">订阅发布内容</td>
                     <td height="30" style="font-size: 18px;">
-                        <input type="text" style="width:90%;height:24px;" name="message" id="message" value="">
+                        <input type="text" style="width:90%;height:24px;" name="message" id="message" class="layui-input" value="">
                     </td>
                 </tr>
             </table>
             <br> <br><br>
             <center>
-                <input type="button" class="mybtn" value="确定" onclick="addCheck();">
-                <input type="button" class="blue" value="返回" onclick="goBack();">
+                <input type="button" class="layui-btn" value="确定" onclick="addCheck();">
+                <input type="button" class="layui-btn layui-btn-danger" value="返回" onclick="goBack();">
             </center>
         </section>
     </aside>

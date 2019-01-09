@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="/WEB-INF/tld/c.tld" %>
 <%@taglib prefix="fn" uri="/WEB-INF/tld/fn.tld" %>
 <%@taglib prefix="fmt" uri="/WEB-INF/tld/fmt.tld" %>
@@ -22,7 +22,12 @@
                     <td height="40" align="center"><strong style="font-size: 20px;">系统日志</strong></td>
                 </tr>
             </table>
-            <table class="bordered">
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                <p style="font-size: 14px;">
+                    更多操作
+                </p>
+            </blockquote>
+            <table class="layui-table">
                 <thead>
                 <tr>
                     <th width="50px">序号</th>

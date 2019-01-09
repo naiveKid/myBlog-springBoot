@@ -1,4 +1,4 @@
-<%@page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@page language="java" contentType="text/html; charset=utf-8" %>
 <script type="text/javascript">
     //1.初始化WebUpload，以及配置全局的参数
     var uploader = WebUploader.create({
@@ -22,9 +22,8 @@
         //追加文件信息div
         $("#fileList")
             .html(
-                "<div id='" + file.id + "'><img class='fileInfo' /><span>"
-                + file.name
-                + "</span><div class='state'>等待上传...</div><span class='text'></span></div>");
+                "<div id='" + file.id + "'><img class='fileInfo' style='float:left;'/><div style='float:left;'><span>"
+                + file.name + "</span><div class='state'>等待上传...</div><span class='text'></span></div></div>");
 
         uploader.makeThumb(file, function (error, src) {
             var id = $("#" + file.id);

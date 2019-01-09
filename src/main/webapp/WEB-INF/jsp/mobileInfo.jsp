@@ -13,11 +13,13 @@
     <link rel="stylesheet" type="text/css" href="/static/css/input/demo.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/input/component.css"/>
     <link rel="stylesheet" href="/static/css/buttons.css" type="text/css">
+    <!-- layer -->
+    <script src="/static/js/layer/layer.js" type="text/javascript"></script>
     <script>
         function getMobileInfo() {
             $.post('/web/getMobileInfo',{'telPhoneNumber':$("#telPhoneNumber").val()},
                 function (result) {
-                    alert(result);
+                    layer.alert(result);
                 }
             )
         }
