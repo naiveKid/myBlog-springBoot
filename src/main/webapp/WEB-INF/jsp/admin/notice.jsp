@@ -54,7 +54,9 @@
                                         ${notice.userName}
                                     </c:if>
                                 </td>
-                                <td><a href="/notice/delete/${notice.noticeId}" onclick="del();">删除</a></td>
+                                <td>
+                                    <a href="#" onclick="del('/notice/delete/${notice.noticeId}');">删除</a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </c:when>

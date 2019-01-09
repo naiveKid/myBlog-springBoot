@@ -11,23 +11,23 @@
         function addCheck() {
             var sumMoney = document.getElementById("sumMoney").value;
             if (sumMoney == ""|| sumMoney == "0" || sumMoney == "0." || sumMoney == "0.0" || sumMoney == "0.00") {
-                alert("红包总金额不能为空!");
+                layer.alert('红包总金额不能为空!', {icon: 2});
                 document.getElementById("sumMoney").focus();
                 return false;
             }
             if(!isPriceNumber(sumMoney)){
-                alert("红包总金额格式不正确!");
+                layer.alert('红包总金额格式不正确!', {icon: 2});
                 document.getElementById("sumMoney").focus();
                 return false;
             }
             var number = document.getElementById("number").value;
             if (number == ""|| number == "0" || number == "0." || number == "0.0" || number == "0.00") {
-                alert("领取总个数不能为空!");
+                layer.alert('领取总个数不能为空!', {icon: 2});
                 document.getElementById("number").focus();
                 return false;
             }
             if(!isPriceNumber(number)){
-                alert("领取总个数格式不正确!");
+                layer.alert('领取总个数格式不正确!', {icon: 2});
                 document.getElementById("number").focus();
                 return false;
             }
@@ -61,9 +61,9 @@
         }
 
         function goBack() {
-            if (window.confirm("确定放弃?")) {
+            layer.confirm('确定放弃？',{icon: 3, title:'提示'}, function(index){
                 window.location.href = "/redPacket/manage";
-            }
+            });
         }
     </script>
 </head>

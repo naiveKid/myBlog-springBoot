@@ -8,53 +8,53 @@
     <jsp:include page="/WEB-INF/jsp/admin/include/header.jsp"/>
     <link rel="stylesheet" type="text/css" href="/static/css/webuploader.css">
     <script type="text/javascript" src="/static/js/webuploader.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/static/UEditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/static/UEditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/ueditor.all.min.js"></script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="/static/UEditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/lang/zh-cn/zh-cn.js"></script>
     <title>aboutMe</title>
     <script type="text/javascript">
         function alterCheck() {
             var realName = document.getElementById("realName").value;
             if (realName == "") {
-                alert("真实姓名不能为空!");
+                layer.alert('真实姓名不能为空!', {icon: 2});
                 document.getElementById("realName").focus();
                 return false;
             }
             var address = document.getElementById("address").value;
             if (address == "") {
-                alert("籍贯不能为空!");
+                layer.alert('籍贯不能为空!', {icon: 2});
                 document.getElementById("address").focus();
                 return false;
             }
             var nowAddress = document.getElementById("nowAddress").value;
             if (nowAddress == "") {
-                alert("现居地不能为空!");
+                layer.alert('现居地不能为空!', {icon: 2});
                 document.getElementById("nowAddress").focus();
                 return false;
             }
             var likeBook = document.getElementById("likeBook").value;
             if (likeBook == "") {
-                alert("喜欢书籍不能为空!");
+                layer.alert('喜欢书籍不能为空!', {icon: 2});
                 document.getElementById("likeBook").focus();
                 return false;
             }
             var likeMusic = document.getElementById("likeMusic").value;
             if (likeMusic == "") {
-                alert("喜欢音乐不能为空!");
+                layer.alert('喜欢音乐不能为空!', {icon: 2});
                 document.getElementById("likeMusic").focus();
                 return false;
             }
             var pictureName = document.getElementById("pictureName").value;
             if (pictureName == "") {
-                alert("文件名不能为空!");
+                layer.alert('文件名不能为空!', {icon: 2});
                 document.getElementById("pictureName").focus();
                 return false;
             }
             var title = document.getElementById("title").value;
             if (title == "") {
-                alert("文章标题不能为空!");
+                layer.alert('文章标题不能为空!', {icon: 2});
                 document.getElementById("title").focus();
                 return false;
             }

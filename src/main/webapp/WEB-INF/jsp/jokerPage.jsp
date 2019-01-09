@@ -13,24 +13,26 @@
     <link rel="stylesheet" type="text/css" href="/static/css/input/demo.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/input/component.css"/>
     <link rel="stylesheet" href="/static/css/buttons.css" type="text/css">
+    <!-- layer -->
+    <script src="/static/js/layer/layer.js" type="text/javascript"></script>
     <script>
         function checkForm() {
             var boyName = document.getElementById("boyName").value;
             var girlName = document.getElementById("girlName").value;
             if (boyName == null || boyName == "" || boyName.indexOf(" ") >= 0) {
                 if (boyName.indexOf(" ") >= 0) {
-                    alert("你给男主输入的啥名字？咋还有空格呢？");
+                    layer.alert('你给男主输入的啥名字？咋还有空格呢？', {icon: 2});
                     return false;
                 }
-                alert("你倒是输入个男主名字啊兄弟！");
+                layer.alert('你倒是输入个男主名字啊兄弟！', {icon: 2});
                 return false;
             }
             if (girlName == null || girlName == "" || girlName.indexOf(" ") >= 0) {
                 if (girlName.indexOf(" ") >= 0) {
-                    alert("你给女主输入的啥名字？咋还有空格呢？");
+                    layer.alert('你给女主输入的啥名字？咋还有空格呢？', {icon: 2});
                     return false;
                 }
-                alert("输入了男主名字就不输入女主名字了？兄弟！");
+                layer.alert('输入了男主名字就不输入女主名字了？兄弟！', {icon: 2});
                 return false;
             }
             window.location.href = "/web/joker?boyName=" + encodeURIComponent(boyName) + "&girlName=" + encodeURIComponent(girlName);

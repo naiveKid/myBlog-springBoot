@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="/WEB-INF/tld/c.tld" %>
 <%@taglib prefix="fn" uri="/WEB-INF/tld/fn.tld" %>
 <%@taglib prefix="fmt" uri="/WEB-INF/tld/fmt.tld" %>
@@ -11,18 +11,23 @@
         function addCheck() {
             var message = document.getElementById("message").value;
             if (message == "") {
-                alert("订阅发布信息不能为空!");
+                layer.alert("订阅发布信息不能为空!", {icon: 2});
                 document.getElementById("message").focus();
                 return false;
             }
-            // 提交表单
-            document.forms["addMessageForm"].submit();
+            $.ajax({
+                type : "post",
+                url : "/essay/publishMessage",
+                data : "random=" + Math.random()+"&message="+message,
+                async : false,
+                success : function(data){}
+            });
         }
 
         function goBack() {
-            if (window.confirm("确定放弃?")) {
+            layer.confirm('确定放弃？',{icon: 3, title:'提示'}, function(index){
                 window.location.href = "/essay/manage";
-            }
+            });
         }
     </script>
 </head>
@@ -35,24 +40,22 @@
     </jsp:include>
     <aside id="rightMenu" class="right-side">
         <section class="content">
-            <form id="addMessageForm" name="addMessageForm" action="/essay/publishMessage" method="post">
-                <table class="bordered">
-                    <tr>
-                        <td colspan="2" height="40"><strong style="font-size: 20px;">添加订阅发布信息</strong></td>
-                    </tr>
-                    <tr>
-                        <td height="30" style="font-size: 18px;">订阅发布内容</td>
-                        <td height="30" style="font-size: 18px;">
-                            <input type="text" style="width:90%;height:24px;" name="message" id="message" value="">
-                        </td>
-                    </tr>
-                </table>
-                <br> <br><br>
-                <center>
-                    <input type="button" class="mybtn" value="确定" onclick="addCheck();">
-                    <input type="button" class="blue" value="返回" onclick="goBack();">
-                </center>
-            </form>
+            <table class="bordered">
+                <tr>
+                    <td colspan="2" height="40"><strong style="font-size: 20px;">添加订阅发布信息</strong></td>
+                </tr>
+                <tr>
+                    <td height="30" style="font-size: 18px;">订阅发布内容</td>
+                    <td height="30" style="font-size: 18px;">
+                        <input type="text" style="width:90%;height:24px;" name="message" id="message" value="">
+                    </td>
+                </tr>
+            </table>
+            <br> <br><br>
+            <center>
+                <input type="button" class="mybtn" value="确定" onclick="addCheck();">
+                <input type="button" class="blue" value="返回" onclick="goBack();">
+            </center>
         </section>
     </aside>
 </div>

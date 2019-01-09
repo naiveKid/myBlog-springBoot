@@ -13,16 +13,18 @@
     <link rel="stylesheet" type="text/css" href="/static/css/input/demo.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/input/component.css"/>
     <link rel="stylesheet" href="/static/css/buttons.css" type="text/css">
+    <!-- layer -->
+    <script src="/static/js/layer/layer.js" type="text/javascript"></script>
     <script>
         function checkForm(role) {
             var boyName = document.getElementById("boyName").value;
             var girlName = document.getElementById("girlName").value;
             if (boyName == null || boyName == "") {
-                alert("你倒是给对方起个名字啊兄dei");
+                layer.alert('你倒是给对方起个名字啊兄dei', {icon: 2});
                 return false;
             }
             if (girlName == null || girlName == "") {
-                alert("你倒是给自己起个名字啊兄dei");
+                layer.alert('你倒是给自己起个名字啊兄dei', {icon: 2});
                 return false;
             }
             window.location.href = "/web/talk?boyName=" + encodeURIComponent(boyName) + "&girlName=" + encodeURIComponent(girlName)+"&role="+role;

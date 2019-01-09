@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -218,12 +219,10 @@ public class EssayController {
     @RequiresRoles("admin")
     //是否具有文章发布权限
     @RequiresPermissions({"essay:publish"})
+    @ResponseBody
     @RequestMapping(value = "/publishMessage")
-    public ModelAndView publishMessage(String message) {
+    public String publishMessage(String message) {
         redisTemplateUtils.sendMessage("essayTalk", message);
-        ModelAndView mav = new ModelAndView("blank");
-        mav.addObject("msg", "发布成功!");
-        mav.addObject("gotoPage", "essay/manage");
-        return mav;
+        return "ok";
     }
 }

@@ -14,6 +14,8 @@
 <script src="/static/js/jquery-ui-1.10.3.js" type="text/javascript"></script>
 <!-- Bootstrap -->
 <script src="/static/js/bootstrap.js" type="text/javascript"></script>
+<!-- layer -->
+<script src="/static/js/layer/layer.js" type="text/javascript"></script>
 <script>
     /**
      * 判断字符串是否为空值
@@ -106,12 +108,15 @@
             success: function (data) {//服务器主动断开
                 //返回登录页面
                 if (data.info == 'alert') {
-                    alert("您的账号在其他地方登录，如非本人操作请重新登录并修改密码！");
-                    window.location.href = '/login.jsp';
+                    layer.alert("您的账号在其他地方登录，如非本人操作请重新登录并修改密码！", function (index) {
+                        window.location.href = '/login.jsp';
+                    });
                 }
             },
             error: function (e) {//网络问题导致的连接断开
-                alert("与服务器断开连接，请检查网络设置是否正确！");
+                layer.alert("与服务器断开连接，请检查网络设置是否正确！", function (index) {
+                    layer.close(index);
+                });
             }
         });
     }
@@ -171,7 +176,9 @@
                 if (msgType == "updateCount") {//更新在线人数
                     $("#countOnline").html(data.onlineCount);
                 } else if (msgType == "essayPublish") {//文章订阅发布消息
-                    alert(data.essayMessage);
+                    layer.alert(data.essayMessage, function (index) {
+                        layer.close(index);
+                    });
                 }
             }
             //拿到任何消息都说明当前连接是正常的，心跳检测重置
@@ -200,9 +207,9 @@
         $("#rightMenu").height(mh); //将right层高度设为最大高度
     }
 
-    function del() {
-        if (!confirm("确认要删除？")) {
-            window.event.returnValue = false;
-        }
+    function del(url) {
+        layer.confirm('确认要删除？',{icon: 3, title:'提示'}, function(index){
+           window.location.href=url;
+        });
     }
 </script>

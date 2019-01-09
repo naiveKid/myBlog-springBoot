@@ -14,7 +14,7 @@ function checkForm() {
 	// 验证用户名框
 	var userName = document.getElementById("userName").value;
 	if (userName == "") {
-		alert("请输入用户名!");
+        layer.alert("请输入用户名!", {icon: 2});
 		// 焦点回到"用户名"框
 		document.getElementById("userName").focus();
 		return false;
@@ -22,7 +22,7 @@ function checkForm() {
 	// 验证密码框
 	var password = document.getElementById("password").value;
 	if (password == "") {
-		alert("请输入密码!");
+        layer.alert("请输入密码!", {icon: 2});
 		// 焦点回到"密码"框
 		document.getElementById("password").focus();
 		return false;
@@ -31,11 +31,11 @@ function checkForm() {
 	var re0 = /^[a-zA-Z0-9]{6,16}$/;
 	if (re0.test(password) == false) {
 		if (password.length < 6)
-			alert("密码至少6位!");
+		    layer.alert("密码至少6位!", {icon: 2});
 		else if (password.length > 16) {
-			alert("密码至多16位!");
+            layer.alert("密码至多16位!", {icon: 2});
 		} else {
-			alert("请确保密码只含有数字和字母!");
+            layer.alert("请确保密码只含有数字和字母!", {icon: 2});
 		}
 		// 焦点回到"密码"框
 		document.getElementById("password").focus();
@@ -46,13 +46,13 @@ function checkForm() {
 	var checkcode = document.getElementById("checkcode").value;
 	var re1 = /^[a-zA-Z0-9]{4,4}$/;
 	if (checkcode == "") {
-		alert("请输入验证码!");
+        layer.alert("请输入验证码!", {icon: 2});
 		// 焦点回到"验证"框
 		document.getElementById("checkcode").focus();
 		return false;
 	}
 	if (re1.test(checkcode) == false) {
-		alert("验证码输入错误!");
+        layer.alert("验证码输入错误!", {icon: 2});
 		// 焦点回到"验证"框
 		document.getElementById("checkcode").focus();
 		return false;
@@ -76,9 +76,9 @@ function checkUserName() {
 						+ encodeURI(encodeURI(userName)),
 				async : false,
 				success : function(data) {// 获得数据成功,则显示在id为result的元素处
-					if (data == "false") {
+					if (data == false) {
 						$("#result").html("<font color='red'>该用户名已被使用!</font>");
-					} else if (data == "true") {
+					} else if (data == true) {
 						$("#result").html("<font color='green'>恭喜您，此用户名可用!</font>");
 					}
 				},

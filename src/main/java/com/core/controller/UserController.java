@@ -73,7 +73,7 @@ public class UserController {
         ModelAndView mav = new ModelAndView("blank");
         boolean flag = false;
         if (!userService.checkYZM(checkcode)) {
-            mav.addObject("msg", "验证码输入有误!");
+            mav.addObject("alert", "验证码输入有误!");
         } else {
             // 获得主题对象
             Subject subject = SecurityUtils.getSubject();
@@ -87,7 +87,7 @@ public class UserController {
                 subject.login(token);
                 flag = true;
             } catch (AuthenticationException e) {
-                mav.addObject("msg", "账户不存在或者密码输入有误!");
+                mav.addObject("alert", "账户不存在或者密码输入有误!");
             }
         }
         if (flag) {
@@ -116,14 +116,14 @@ public class UserController {
         ModelAndView mav = new ModelAndView("blank");
         boolean flag = false;
         if (!userService.checkYZM(checkcode)) {
-            mav.addObject("msg", "验证码输入有误!");
+            mav.addObject("alert", "验证码输入有误!");
         } else {
             UserInfo user = userService.getUser(userinfo.getUserName());
             if (user != null) {
-                mav.addObject("msg", "账户已存在，请更换用户名!");
+                mav.addObject("alert", "账户已存在，请更换用户名!");
             } else {
                 userService.addUser(userinfo);
-                mav.addObject("msg", "注册成功！!");
+                mav.addObject("alert", "注册成功！!");
                 flag = true;
             }
         }

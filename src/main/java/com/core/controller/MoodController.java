@@ -50,6 +50,8 @@ public class MoodController {
      *
      * @return
      */
+    //是否具有admin角色
+    @RequiresRoles("admin")
     @RequestMapping("/manage")
     public ModelAndView manage() {
         ModelAndView mav = new ModelAndView("admin/mood");

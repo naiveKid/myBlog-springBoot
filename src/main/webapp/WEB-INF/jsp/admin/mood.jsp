@@ -55,7 +55,7 @@
                                 </td>
                                 <td>
                                     <a href="/mood/alterPage/${mood.moodId}">修改</a>
-                                    <a href="/mood/deleteMood/${mood.moodId}" onclick="del();">删除</a>
+                                    <a href="#" onclick="del('/mood/deleteMood/${mood.moodId}');">删除</a>
                                 </td>
                             </tr>
                         </c:forEach>

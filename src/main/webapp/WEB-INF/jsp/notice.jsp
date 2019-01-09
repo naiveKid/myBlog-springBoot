@@ -10,7 +10,10 @@
     <link href="/static/css/notice.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/page.css" type="text/css">
     <link rel="stylesheet" href="/static/css/buttons.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/layui.css">
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <!-- layer -->
+    <script src="/static/js/layer/layer.js" type="text/javascript"></script>
     <script type="text/javascript" src="/static/js/sliders.js"></script>
     <script src="/static/js/modernizr.js"></script>
     <script src="/static/js/notice.js"></script>
@@ -54,9 +57,9 @@
         <jsp:param name="link" value="/notice/index"/>
     </jsp:include>
     <div style="padding-top: 50px;"></div>
-    <form name="noticeForm" id="noticeForm" method="post" action="/notice/addNotice">
-        <div align="center" style="font-size: 14px;">
-            <textarea id="content" name="content" rows="10" cols="80%"></textarea>
+    <form name="noticeForm" id="noticeForm" method="post" action="/notice/addNotice" class="layui-form">
+        <div align="center" style="font-size: 14px;width: 50%;margin-left: 25%" class="layui-form-item layui-form-text">
+            <textarea id="content" name="content" class="layui-textarea"></textarea>
         </div>
         <div align="center" style="margin-top: 15px;">
             <a class="button button-glow button-border button-rounded button-primary" href="#" onclick="checkContent();">我要留言</a>

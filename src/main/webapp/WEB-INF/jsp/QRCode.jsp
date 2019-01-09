@@ -13,11 +13,13 @@
     <link rel="stylesheet" type="text/css" href="/static/css/input/component.css"/>
     <link rel="stylesheet" href="/static/css/buttons.css" type="text/css">
     <link href="/static/css/aboutMe.css" type="text/css" rel="stylesheet"/>
-    <link href="/static/css/layer.css" type="text/css" rel="stylesheet"/>
+    <link href="/static/css/qrcode.css" type="text/css" rel="stylesheet"/>
+    <!-- layer -->
+    <script src="/static/js/layer/layer.js" type="text/javascript"></script>
     <script>
         function getQRCode() {
             if ($("#qrcode").val() == "") {
-                alert("输入信息不能为空.");
+                layer.alert("输入信息不能为空.", {icon: 2});
                 return false;
             } else {
                 $.post("/web/QRCode", {

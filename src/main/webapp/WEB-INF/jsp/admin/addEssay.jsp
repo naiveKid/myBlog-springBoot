@@ -8,23 +8,23 @@
     <jsp:include page="/WEB-INF/jsp/admin/include/header.jsp"/>
     <link rel="stylesheet" type="text/css" href="/static/css/webuploader.css">
     <script type="text/javascript" src="/static/js/webuploader.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/static/UEditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/static/UEditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/ueditor.all.min.js"></script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="/static/UEditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js/UEditor/lang/zh-cn/zh-cn.js"></script>
     <title>essay</title>
     <script type="text/javascript">
         function addCheck() {
             var pictureName = document.getElementById("pictureName").value;
             if (pictureName == "") {
-                alert("文件名不能为空!");
+                layer.alert("文件名不能为空!", {icon: 2});
                 document.getElementById("pictureName").focus();
                 return false;
             }
             var title = document.getElementById("title").value;
             if (title == "") {
-                alert("文章标题不能为空!");
+                layer.alert('文章标题不能为空!', {icon: 2});
                 document.getElementById("title").focus();
                 return false;
             }
@@ -34,9 +34,9 @@
         }
 
         function goBack() {
-            if (window.confirm("确定放弃?")) {
+            layer.confirm('确定放弃？',{icon: 3, title:'提示'}, function(index){
                 window.location.href = "/essay/manage";
-            }
+            });
         }
     </script>
 </head>

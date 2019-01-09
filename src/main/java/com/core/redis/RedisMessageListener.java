@@ -20,7 +20,6 @@ import java.util.Map;
 public class RedisMessageListener implements MessageListener {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
-    private static Logger logger = Logger.getLogger(RedisMessageListener.class);
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
@@ -39,7 +38,7 @@ public class RedisMessageListener implements MessageListener {
             try {
                 WebSocketUtil.sendMessageToAllUser(LoginHandler.getUserMap(),messageMap);
             } catch (Exception e) {
-                logger.error("通过websocket给在线人员发送订阅消息失败.",e);
+                e.printStackTrace();
             }
         }
     }

@@ -1,7 +1,7 @@
 function checkContent(){
 	var content = document.getElementById("content").value;
 	if(content==""){
-		alert("请输入留言内容！");
+        layer.alert("请输入留言内容！", {icon: 2});
 		document.getElementById("content").focus();
 		return false;
 	}

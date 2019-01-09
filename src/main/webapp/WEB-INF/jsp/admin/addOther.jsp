@@ -13,7 +13,7 @@
         function alterCheck() {
             var pictureName = document.getElementById("pictureName").value;
             if (pictureName == "") {
-                alert("上传文件不能为空!");
+                layer.alert("上传文件不能为空!", {icon: 2});
                 document.getElementById("pictureName").focus();
                 return false;
             }
@@ -22,9 +22,9 @@
         }
 
         function goBack() {
-            if (window.confirm("确定放弃?")) {
+            layer.confirm('确定放弃？',{icon: 3, title:'提示'}, function(index){
                 window.location.href = "/web/other";
-            }
+            });
         }
     </script>
 </head>

@@ -25,13 +25,9 @@ public class WebExceptionResolver extends SimpleMappingExceptionResolver {
 
     @Override
     protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        // 判断是否已进行了异常日志的记录
-        String logging=(String)request.getAttribute("logging");
-        if(logging==null||logging==""){
-            Logger logger = LogManager.getLogger();
-            logger.error(ex.getMessage(), ex);
-            request.setAttribute("logging","true");
-        }
+        /*******************需要进行日志记录的异常**********************/
+        Logger logger = LogManager.getLogger();
+        logger.error(ex.getMessage(), ex);
         return super.doResolveException(request, response, handler, ex);
     }
 }

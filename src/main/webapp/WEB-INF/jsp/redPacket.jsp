@@ -10,6 +10,8 @@
     <script src="/static/js/jquery.min.js"></script>
     <link href="/static/css/aboutMe.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/buttons.css" type="text/css">
+    <!-- layer -->
+    <script src="/static/js/layer/layer.js" type="text/javascript"></script>
     <style type="text/css">
         #cover {
             position: absolute;
@@ -41,7 +43,7 @@
             showZz();
             $.post('/web/doRedPacket?_method=put',{'packetId':packetId},
                 function (result) {
-                    alert(result);
+                    layer.alert(result, {icon: 1});
                     hiddenZz();
                 }
             )

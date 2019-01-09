@@ -19,10 +19,17 @@ public class RedPacketController {
     @Autowired
     RedPacketService redPacketService;
 
+    /**
+     * 后台红包活动列表页面
+     *
+     * @return
+     */
+    //是否具有admin角色
+    @RequiresRoles("admin")
     @RequestMapping("/manage")
     public ModelAndView listRedPacket() {
         ModelAndView mav = new ModelAndView("admin/pickRedPacket");
-        List<PickRedPacket> list=redPacketService.getPickRedPacketByPage();
+        List<PickRedPacket> list = redPacketService.getPickRedPacketByPage();
         Page.setTotalCount(redPacketService.getCount());
         mav.addObject("list", list);
         return mav;

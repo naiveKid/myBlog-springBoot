@@ -13,19 +13,19 @@
         function addCheck() {
             var pictureName = document.getElementById("pictureName").value;
             if (pictureName == "") {
-                alert("文件名不能为空!");
+                layer.alert('文件名不能为空!', {icon: 2});
                 document.getElementById("pictureName").focus();
                 return false;
             }
             var pictureTitle = document.getElementById("pictureTitle").value;
             if (pictureTitle == "") {
-                alert("相片标题不能为空!");
+                layer.alert('相片标题不能为空!', {icon: 2});
                 document.getElementById("pictureTitle").focus();
                 return false;
             }
             var pictureContent = document.getElementById("pictureContent").value;
             if (pictureContent == "") {
-                alert("相片描述不能为空!");
+                layer.alert('相片描述不能为空!', {icon: 2});
                 document.getElementById("pictureContent").focus();
                 return false;
             }
@@ -34,9 +34,9 @@
         }
 
         function goBack() {
-            if (window.confirm("确定放弃?")) {
+            layer.confirm('确定放弃？',{icon: 3, title:'提示'}, function(index){
                 window.location.href = "/picture/manage";
-            }
+            });
         }
     </script>
 </head>

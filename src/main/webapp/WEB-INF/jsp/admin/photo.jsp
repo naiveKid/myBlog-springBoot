@@ -67,7 +67,7 @@
                                 </td>
                                 <td>
                                     <a href="/picture/alterPage/${picture.pictureId}">修改</a>
-                                    <a href="/picture/deletePicture/${picture.pictureId}" onclick="del();">删除</a>
+                                    <a href="#" onclick="del('/picture/deletePicture/${picture.pictureId}');">删除</a>
                                 </td>
                             </tr>
                         </c:forEach>

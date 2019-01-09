@@ -67,7 +67,7 @@
                                 <td><img style="width: 50px; height:50px;" src="${essay.pictureName}" onerror="javascript:this.src='/static/images/error.jpg';this.onerror = null"></td>
                                 <td>
                                     <a href="/essay/alterPage/${essay.essayId}">修改</a>
-                                    <a href="/essay/deleteEssay/${essay.essayId}" onclick="del();">删除</a>
+                                    <a href="#" onclick="del('/essay/deleteEssay/${essay.essayId}');">删除</a>
                                 </td>
                             </tr>
                         </c:forEach>

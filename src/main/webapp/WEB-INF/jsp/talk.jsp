@@ -10,6 +10,8 @@
     <script src="/static/js/jquery.min.js"></script>
     <link href="/static/css/aboutMe.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/buttons.css" type="text/css">
+    <!-- layer -->
+    <script src="/static/js/layer/layer.js" type="text/javascript"></script>
     <style type="text/css">
         input {
             border: 2px solid #ddd;
@@ -312,9 +314,9 @@
 
     function send() {
         if (text.value == ''&&modelNum==1) {
-            window.alert('舔狗必死，你必须狠狠的虐待它！');
-        }else if (text.value == ''&&modelNum==1) {
-            window.alert('作为舔狗你一个字都不打就想发送消息？');
+            layer.alert('舔狗必死，你必须狠狠的虐待它！', {icon: 6});
+        }else if (text.value == ''&&modelNum==2) {
+            layer.alert('作为舔狗你一个字都不打就想发送消息？', {icon: 6});
         } else {
             content.innerHTML += '<li><img src="' + myIconSrc + '"width=40px height=40px ></img><span style="word-wrap: break-word; word-break: break-all;">' + text.value + '</span></li>';
             iNow++;
@@ -366,7 +368,7 @@
 
     function lahei() {
         window.clearInterval(xh);
-        window.alert('已成功拉黑 ' + hisName);
+        layer.alert('已成功拉黑 ' + hisName, {icon: 6});
     }
 </script>
 </body>

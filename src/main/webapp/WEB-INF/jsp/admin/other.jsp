@@ -50,7 +50,9 @@
                                         ${picture.pictureName}
                                     </c:if>
                                 </td>
-                                <td><a href="/web/other/del/${picture.pictureId}">删除</a></td>
+                                <td>
+                                    <a href="#" onclick="del('/web/other/del/${picture.pictureId}');">删除</a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </c:when>

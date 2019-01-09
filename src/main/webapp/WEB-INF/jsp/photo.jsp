@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/static/css/hero-slider-style.css">
     <link rel="stylesheet" href="/static/css/magnific-popup.css">
     <link rel="stylesheet" href="/static/css/templatemo-style.css">
-    <script src="/static/js/jquery-1.11.3.min.js"></script>
+    <script src="/static/js/jquery-1.10.2.min.js"></script>
     <script>
         var tm_gray_site = false;
         if (tm_gray_site) {

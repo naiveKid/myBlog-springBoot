@@ -50,7 +50,7 @@
                                 <td>${obj.timeConsuming}ms</td>
                                 <td>
                                     <a href="/systemLog/showOperationLog/${obj.id}">查看</a>
-                                    <a href="/systemLog/delOperationLog/${obj.id}" onclick="del();">删除</a>
+                                    <a href="#" onclick="del('/systemLog/delOperationLog/${obj.id}');">删除</a>
                                 </td>
                             </tr>
                         </c:forEach>

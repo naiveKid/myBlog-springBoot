@@ -296,7 +296,7 @@ public class WebController {
         try {
             if (CommonUtil.isNull(keyWord)) {
                 mav.setViewName("blank");
-                mav.addObject("msg", "关键字不能为空!");
+                mav.addObject("alert", "关键字不能为空!");
                 mav.addObject("gotoPage", "web/myBlog/index");
                 return mav;
             }
