@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <header class="header">
     <a href="/web/manage" class="logo">兔小白个人博客</a>
     <nav class="navbar navbar-static-top">

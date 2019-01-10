@@ -1,7 +1,6 @@
 package com.core.controller;
 
 import com.base.model.UserInfo;
-import com.base.util.CommonUtil;
 import com.base.util.RequestContextHolderUtil;
 import com.core.service.UserService;
 import io.swagger.annotations.Api;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="/WEB-INF/tld/c.tld" %>
 <aside id="leftMenu" class="left-side sidebar-offcanvas">
     <section class="sidebar">

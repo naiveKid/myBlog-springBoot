@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<%@ page language="java" import="java.util.ArrayList" contentType="text/html; charset=utf-8" %>
+<%@ page import="java.util.List" %>
 <%@taglib prefix="c" uri="/WEB-INF/tld/c.tld" %>
 <%@taglib prefix="fn" uri="/WEB-INF/tld/fn.tld" %>
 <%@taglib prefix="fmt" uri="/WEB-INF/tld/fmt.tld" %>

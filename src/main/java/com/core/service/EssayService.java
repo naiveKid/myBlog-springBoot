@@ -2,13 +2,11 @@ package com.core.service;
 
 import com.base.model.Essay;
 import com.base.util.CommonUtil;
-import com.base.util.RequestContextHolderUtil;
 import com.core.dao.EssayMapper;
 import com.core.redis.RedisTemplateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.util.List;
 
 @Service

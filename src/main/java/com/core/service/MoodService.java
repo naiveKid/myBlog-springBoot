@@ -1,7 +1,6 @@
 package com.core.service;
 
 import com.base.model.Mood;
-import com.base.util.RequestContextHolderUtil;
 import com.core.dao.MoodMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -9,7 +8,6 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.util.List;
 
 /**

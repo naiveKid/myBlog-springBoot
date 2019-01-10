@@ -1,5 +1,4 @@
-<%@page language="java" import="java.util.*" pageEncoding="UTF-8" %>
-<%@page import="com.base.pojo.Page" %>
+<%@page language="java" import="com.base.pojo.Page" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="/WEB-INF/tld/c.tld" %>
 <script type="text/javascript" src="/static/js/page.js"></script>
 <%
