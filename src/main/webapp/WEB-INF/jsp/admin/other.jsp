@@ -72,5 +72,6 @@
         </jsp:include>
     </aside>
 </div>
+<jsp:include page="./include/bottom.jsp"></jsp:include>
 </body>
 </html>

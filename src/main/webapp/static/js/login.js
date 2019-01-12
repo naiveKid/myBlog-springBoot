@@ -14,7 +14,7 @@ function checkLoginForm() {
     // 验证用户名框
     var userName = document.getElementById("userName").value;
     if (userName == "") {
-        alert("请输入用户名!");
+        layer.alert("请输入用户名!", {icon: 2});
         // 焦点回到"用户名"框
         document.getElementById("userName").focus();
         return false;
@@ -23,19 +23,19 @@ function checkLoginForm() {
     // 验证密码框
     var password = document.getElementById("password").value;
     if (password == "") {
-        alert("请输入密码!");
+        layer.alert("请输入密码!", {icon: 2});
         // 焦点回到"密码"框
         document.getElementById("password").focus();
         return false;
     }
-	/* 匹配6-16个字符，只能是数字或字母的正则表达式 */
+    /* 匹配6-16个字符，只能是数字或字母的正则表达式 */
     var re0 = /^[a-zA-Z0-9]{6,16}$/;
     if (re0.test(password) == false) {
         if (password.length < 6) alert("密码至少6位!");
         else if (password.length > 16) {
-            alert("密码至多16位!");
+            layer.alert("密码至多16位!", {icon: 2});
         } else {
-            alert("请确保密码只含有数字和字母!");
+            layer.alert("请确保密码只含有数字和字母!", {icon: 2});
         }
         // 焦点回到"密码"框
         document.getElementById("password").focus();
@@ -45,14 +45,14 @@ function checkLoginForm() {
     // 验证码框
     var checkcode = document.getElementById("checkcode").value;
     if (checkcode == "") {
-        alert("请输入验证码!");
+        layer.alert("请输入验证码!", {icon: 2});
         // 焦点回到"验证"框
         document.getElementById("checkcode").focus();
         return false;
     }
     var re1 = /^[a-zA-Z0-9]{4,4}$/;
     if (re1.test(checkcode) == false) {
-        alert("验证码输入错误!");
+        layer.alert("验证码输入错误!", {icon: 2});
         // 焦点回到"验证"框
         document.getElementById("checkcode").focus();
         return false;

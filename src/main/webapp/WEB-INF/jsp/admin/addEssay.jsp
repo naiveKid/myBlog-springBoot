@@ -8,8 +8,6 @@
     <jsp:include page="/WEB-INF/jsp/admin/include/header.jsp"/>
     <link rel="stylesheet" type="text/css" href="/static/css/webuploader.css">
     <script type="text/javascript" src="/static/js/webuploader.js"></script>
-    <!-- ckeditor5 -->
-    <link type="text/css" href="/static/js/ckeditor5/sample/css/sample.css" rel="stylesheet"/>
     <title>essay</title>
     <script type="text/javascript">
         function addCheck() {
@@ -88,14 +86,7 @@
     </aside>
 </div>
 <jsp:include page="./include/uploader.jsp"></jsp:include>
-<script src="/static/js/ckeditor5/ckeditor.js"></script>
-<script>
-    ClassicEditor.create( document.querySelector( '#editor' ), {
-    } ).then( editor => {
-        window.editor = editor;
-    } ).catch( err => {
-        console.error( err.stack );
-    } );
-</script>
+<jsp:include page="./include/ckeditor.jsp"></jsp:include>
+<jsp:include page="./include/bottom.jsp"></jsp:include>
 </body>
 </html>

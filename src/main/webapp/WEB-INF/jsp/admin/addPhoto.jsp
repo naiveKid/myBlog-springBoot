@@ -90,5 +90,6 @@
     </aside>
 </div>
 <jsp:include page="./include/uploader.jsp"></jsp:include>
+<jsp:include page="./include/bottom.jsp"></jsp:include>
 </body>
 </html>

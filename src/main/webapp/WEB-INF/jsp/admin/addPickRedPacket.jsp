@@ -119,5 +119,6 @@
     </aside>
 </div>
 <script src="/static/js/layui/layui.all.js"></script>
+<jsp:include page="./include/bottom.jsp"></jsp:include>
 </body>
 </html>
