@@ -24,11 +24,20 @@ public class WebsocketConfig implements WebSocketConfigurer {
 				.addInterceptors(myLoginHandshake()).withSockJS();
 	}
 
+    /**
+     * 自定义handler
+     * @return
+     */
 	@Bean
 	public LoginHandler myLoginHandler() {
 		return new LoginHandler();
 	}
 
+
+    /**
+     * 自定义handler拦截器
+     * @return
+     */
 	@Bean
 	public LoginHandlerInterceptor myLoginHandshake() {
 		return new LoginHandlerInterceptor();
