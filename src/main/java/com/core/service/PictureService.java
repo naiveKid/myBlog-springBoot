@@ -51,6 +51,7 @@ public class PictureService {
      * @param pictureId
      * @return
      */
+    //使用自定义key生成器:@Cacheable(value = "picture", keyGenerator = "keyGenerator")
     @Cacheable(value = "picture", key = "'picture_'+#pictureId")
     public Picture getPictureById(int pictureId) {
         return (Picture) pictureDao.selectByPrimaryKey(pictureId);

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -65,6 +66,19 @@ public class RedisConfig {
        jedisConnectionFactory.setDatabase(redisProperties.getDatabase());
         jedisConnectionFactory.setTimeout(Integer.parseInt(String.valueOf(redisProperties.getTimeout().toMillis())));
        return jedisConnectionFactory;
+    }
+
+    @Bean
+    public KeyGenerator keyGenerator() {
+        return (target, method, objects) -> {
+            StringBuilder sb = new StringBuilder();
+            sb.append(target.getClass().getName());
+            sb.append("::" + method.getName() + ":");
+            for (Object obj : objects) {
+                sb.append(obj.toString());
+            }
+            return sb.toString();
+        };
     }
 
     //消息监听器
